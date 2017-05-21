@@ -1,0 +1,69 @@
+package game;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+
+public class WarningLogIn {
+
+	private JFrame frmGuessWho;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					WarningLogIn window = new WarningLogIn();
+					window.frmGuessWho.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public WarningLogIn() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmGuessWho = new JFrame();
+		frmGuessWho.setTitle("Warning");
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\workspace\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setBounds(100, 100, 450, 168);
+		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGuessWho.getContentPane().setLayout(null);
+		frmGuessWho.setLocationRelativeTo(null);
+		
+		JLabel lblNewLabel = new JLabel("\u03A4\u03BF \u03CC\u03BD\u03BF\u03BC\u03B1 \u03C7\u03C1\u03AE\u03C3\u03C4\u03B7 \u03B4\u03B5\u03BD \u03C5\u03C0\u03AC\u03C1\u03C7\u03B5\u03B9 !");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
+		lblNewLabel.setBounds(72, 25, 314, 27);
+		frmGuessWho.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("\u039F\u039A");
+		btnNewButton.setBackground(SystemColor.inactiveCaptionBorder);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(162, 65, 99, 25);
+		frmGuessWho.getContentPane().add(btnNewButton);
+	}
+
+}
