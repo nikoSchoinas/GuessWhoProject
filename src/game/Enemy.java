@@ -23,13 +23,13 @@ public class Enemy {
 		int selectedQuestionCode= -1;
 		int numOfDeletedFaces= -1;
 		
-		if(levelSelection==0){//eykolo epipedo
+		if(levelSelection==0){//easy level
 			Random r = new Random();
 			int Low = 0;
 			int High = questions.size()-1;
 			selectedQuestionCode = r.nextInt(High-Low) + Low;
 			
-		}else{
+		}else{//difficult level
 			for(int i=0;i<questions.size();i++){
 				numOfDeletedFaces = questions.get(i).facesForDelete(faceslist, playerFace);
 				System.out.println(numOfDeletedFaces+"tic");
@@ -55,7 +55,7 @@ public class Enemy {
 	}
 	
 	
-	public Face selectFace(){//επιλογη παικτη απο τον υπολογιστη
+	public Face selectFace(){//computer's random selection of player
 		Random r = new Random();
 		int Low = 1;
 		int High = 24;

@@ -8,7 +8,7 @@ public final class Initialization {
 	private static ArrayList<Question> questionlist;
 
 
-	static{//εδω αρχικοποιει σαν κατασκευαστης
+	static{//initialization of constructor
 		
 		faceslist = new ArrayList<Face>();		
 		questionlist = new ArrayList<Question>();	
