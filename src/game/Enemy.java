@@ -17,17 +17,17 @@ public class Enemy {
 		return selectedEnemyFace;
 	}
 
-	public int selectQuestionCode(int levelSelection, Face playerFace, ArrayList<Face> faceslist,ArrayList<Question> questions){//επιπεδο δυσκολιας
+	public int selectQuestionCode(int levelSelection, Face playerFace, ArrayList<Face> faceslist,ArrayList<Question> questions){//difficulty level
 		
 		int maxDeletedFaces= -1;
-		int selectedQuestionCode= -1;
+		int selectedQuestionIndex= -1;
 		int numOfDeletedFaces= -1;
 		
 		if(levelSelection==0){//easy level
 			Random r = new Random();
 			int Low = 0;
 			int High = questions.size()-1;
-			selectedQuestionCode = r.nextInt(High-Low) + Low;
+			selectedQuestionIndex = r.nextInt(High-Low) + Low;
 			
 		}else{//difficult level
 			for(int i=0;i<questions.size();i++){
@@ -35,22 +35,13 @@ public class Enemy {
 				System.out.println(numOfDeletedFaces+"tic");
 				if(numOfDeletedFaces > maxDeletedFaces){
 					maxDeletedFaces = numOfDeletedFaces;
-					selectedQuestionCode = i;
+					selectedQuestionIndex = i;
 				}
 			}
-			/*for(Question question : questions){
-				numOfDeletedFaces = question.facesForDelete(faceslist, playerFace);
-				if(numOfDeletedFaces > maxDeletedFaces){
-					maxDeletedFaces = numOfDeletedFaces;
-					selectedQuestionCode = question.getCodeQuestion();
-					System.out.println(maxDeletedFaces+"tic");
-				}
-				
-			}*/
 			
 		}
 
-		return selectedQuestionCode;
+		return selectedQuestionIndex;
 		
 	}
 	
