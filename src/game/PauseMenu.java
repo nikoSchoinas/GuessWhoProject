@@ -14,7 +14,8 @@ import java.awt.event.ActionEvent;
 
 public class PauseMenu {
 
-	JFrame frmGuessWho;
+	static JFrame frmGuessWho;
+	static JFrame MainGamePanel;
 
 	/**
 	 * Launch the application.
@@ -23,7 +24,7 @@ public class PauseMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PauseMenu window = new PauseMenu();
+					PauseMenu window = new PauseMenu(frmGuessWho);
 					window.frmGuessWho.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +36,8 @@ public class PauseMenu {
 	/**
 	 * Create the application.
 	 */
-	public PauseMenu() {
+	public PauseMenu(JFrame MainGamePanel) {
+		PauseMenu.MainGamePanel = MainGamePanel;
 		initialize();
 	}
 
@@ -43,9 +45,10 @@ public class PauseMenu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?\r\n");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\workspace\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -67,6 +70,19 @@ public class PauseMenu {
 		JButton ExitButton = new JButton("\u0388\u03BE\u03BF\u03B4\u03BF\u03C2");
 		ExitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frmGuessWho.dispose();
+				MainGamePanel.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							Mainframe window = new Mainframe();
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				
 			}
 		});
@@ -74,7 +90,7 @@ public class PauseMenu {
 		frmGuessWho.getContentPane().add(ExitButton);
 		
 		JLabel Background = new JLabel("\r\n");
-		Background.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\background_main.jpg"));
+		Background.setIcon(new ImageIcon(path+"\\background_main.jpg"));
 		Background.setBounds(0, 0, 444, 267);
 		frmGuessWho.getContentPane().add(Background);
 	}
