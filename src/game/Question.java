@@ -124,9 +124,122 @@ public class Question {
 		}
 	}
 	
-	/*public void clearDeletedFacesList(){
-		for(int i=0;i<deletedFaces.size();i++)
-			deletedFaces.remove(i);
-	}*/
+	public boolean questionResponse(Face enemyFace){
+
+		switch (codeQuestion) {
+		case 0:
+			if (enemyFace.isBlackHair())
+				return true;
+			break;
+		case 1:
+			if (enemyFace.isBlondHair())
+				return true;
+			break;
+		case 2:
+			if (enemyFace.isWhiteHair())
+				return true;
+			break;
+		case 3:
+			if (enemyFace.isBrownHair())
+				return true;
+			break;
+		case 4:
+			if (enemyFace.isBlueEyes())
+				return true;
+			break;
+		case 5:
+			if (enemyFace.isBrownEyes())
+				return true;
+			break;
+		case 6:
+			if (enemyFace.isGreenEyes())
+				return true;
+			break;
+		case 7:
+			if (enemyFace.isBlackSkin())
+				return true;
+			break;
+		case 8:
+			if (enemyFace.isGlasses())
+				return true;
+			break;
+		case 9:
+			if (enemyFace.isHat())
+				return true;
+			break;
+		case 10:
+			if (enemyFace.isFaceHair())
+				return true;
+			break;
+		case 11:
+			if (enemyFace.isSex())
+				return true;
+			break;
+		default: System.out.println("Question 's code out of bounds ");
+		break;
+
+		}
+
+		return false;
+	}
+	
+		public boolean checkQuestion(Face selectedFace, boolean playerResponse){
+
+		switch (codeQuestion) {
+		case 0:
+			if (selectedFace.isBlackHair() == playerResponse )
+				return true;
+			break;
+		case 1:
+			if (selectedFace.isBlondHair() == playerResponse)
+				return true;
+			break;
+		case 2:
+			if (selectedFace.isWhiteHair() == playerResponse)
+				return true;
+			break;
+		case 3:
+			if (selectedFace.isBrownHair() == playerResponse)
+				return true;
+			break;
+		case 4:
+			if (selectedFace.isBlueEyes() == playerResponse)
+				return true;
+			break;
+		case 5:
+			if (selectedFace.isBrownEyes() == playerResponse)
+				return true;
+			break;
+		case 6:
+			if (selectedFace.isGreenEyes() == playerResponse)
+				return true;
+			break;
+		case 7:
+			if (selectedFace.isBlackSkin() == playerResponse)
+				return true;
+			break;
+		case 8:
+			if (selectedFace.isGlasses() == playerResponse)
+				return true;
+			break;
+		case 9:
+			if (selectedFace.isHat() == playerResponse)
+				return true;
+			break;
+		case 10:
+			if (selectedFace.isFaceHair() == playerResponse)
+				return true;
+			break;
+		case 11:
+			if (selectedFace.isSex() == playerResponse)
+				return true;
+			break;
+		default: System.out.println("Question 's code out of bounds ");
+		break;
+
+		}
+
+		return false;
+	}
 
 }
