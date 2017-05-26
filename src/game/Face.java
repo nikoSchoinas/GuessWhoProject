@@ -10,7 +10,7 @@ public class Face {
 		private boolean brownEyes;
 		private boolean greenEyes;
 		private boolean blackSkin;
-		private boolean whiteSkin;
+		// 9 private boolean whiteSkin;
 		private boolean glasses;
 		private boolean hat;
 		private boolean faceHair;
@@ -19,7 +19,7 @@ public class Face {
 		
 		
 		public Face(boolean blackHair, boolean blondHair, boolean whiteHair, boolean brownHair, boolean blueEyes,
-				boolean brownEyes,boolean greenEyes, boolean blackSkin, boolean whiteSkin, boolean glasses, boolean hat,
+				boolean brownEyes,boolean greenEyes, boolean blackSkin, boolean glasses, boolean hat,
 				boolean faceHair,boolean sex, int code) {
 			
 			this.blackHair = blackHair;
@@ -29,7 +29,6 @@ public class Face {
 			this.blueEyes = blueEyes;
 			this.brownEyes = brownEyes;
 			this.blackSkin = blackSkin;
-			this.whiteSkin = whiteSkin;
 			this.glasses = glasses;
 			this.hat = hat;
 			this.faceHair = faceHair;
@@ -115,14 +114,6 @@ public class Face {
 
 		public void setBlackSkin(boolean blackSkin) {
 			this.blackSkin = blackSkin;
-		}
-
-		public boolean isWhiteSkin() {
-			return whiteSkin;
-		}
-
-		public void setWhiteSkin(boolean whiteSkin) {
-			this.whiteSkin = whiteSkin;
 		}
 
 		public boolean isGlasses() {
