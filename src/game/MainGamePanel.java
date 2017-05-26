@@ -50,41 +50,42 @@ public class MainGamePanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\workspace\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setBounds(100, 100, 1068, 738);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		
 		JLabel player1 = new JLabel("New label");
-		player1.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
 		player1.setBounds(588, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player1);
 		
 		JLabel player2 = new JLabel("New label");
-		player2.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
 		player2.setBounds(502, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player2);
 		
 		JLabel player3 = new JLabel("New label");
-		player3.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
 		player3.setBounds(416, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player3);
 		
 		JLabel player4 = new JLabel("New label");
-		player4.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
+		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
 		player4.setBounds(674, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player4);
 		
 		JLabel player5 = new JLabel("New label");
-		player5.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
+		player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
 		player5.setBounds(760, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player5);
 		
 		JLabel player6 = new JLabel("New label");
-		player6.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
 		player6.setBounds(330, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player6);
 		
@@ -94,87 +95,87 @@ public class MainGamePanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(p7==1){
-					player7.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\backofcards.png"));
+					player7.setIcon(new ImageIcon(path + "\\backofcards.png"));
 					p7=0;
 				}else{
-					player7.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
+					player7.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
 					p7=1;}
 			}
 		});
-		player7.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
+		player7.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
 		player7.setBounds(330, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player7);
 		
 		JLabel player8 = new JLabel("New label");
-		player8.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg"));
+		player8.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg"));
 		player8.setBounds(416, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player8);
 		
 		JLabel player9 = new JLabel("");
-		player9.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		player9.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
 		player9.setForeground(Color.WHITE);
 		player9.setBackground(Color.WHITE);
 		player9.setBounds(502, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player9);
 		
 		JLabel player10 = new JLabel("");
-		player10.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg"));
+		player10.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg"));
 		player10.setForeground(Color.WHITE);
 		player10.setBackground(Color.WHITE);
 		player10.setBounds(588, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player10);
 		
 		JLabel player11 = new JLabel("");
-		player11.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg"));
+		player11.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg"));
 		player11.setForeground(Color.WHITE);
 		player11.setBackground(Color.WHITE);
 		player11.setBounds(674, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player11);
 		
 		JLabel player12 = new JLabel("");
-		player12.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg"));
+		player12.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg"));
 		player12.setForeground(Color.WHITE);
 		player12.setBackground(Color.WHITE);
 		player12.setBounds(760, 338, 74, 104);
 		frmGuessWho.getContentPane().add(player12);
 		
 		JLabel player13 = new JLabel("new");
-		player13.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg"));
+		player13.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg"));
 		player13.setForeground(Color.WHITE);
 		player13.setBackground(Color.WHITE);
 		player13.setBounds(330, 455, 74, 104);
 		frmGuessWho.getContentPane().add(player13);
 		
 		JLabel player14 = new JLabel("new");
-		player14.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg"));
+		player14.setIcon(new ImageIcon(path + "\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg"));
 		player14.setForeground(Color.WHITE);
 		player14.setBackground(Color.WHITE);
 		player14.setBounds(416, 455, 74, 104);
 		frmGuessWho.getContentPane().add(player14);
 		
 		JLabel player15 = new JLabel("new");
-		player15.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg"));
+		player15.setIcon(new ImageIcon(path + "\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg"));
 		player15.setForeground(Color.WHITE);
 		player15.setBackground(Color.WHITE);
 		player15.setBounds(502, 455, 74, 104);
 		frmGuessWho.getContentPane().add(player15);
 		
 		JLabel player16 = new JLabel("new");
-		player16.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg"));
+		player16.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg"));
 		player16.setForeground(Color.WHITE);
 		player16.setBackground(Color.WHITE);
 		player16.setBounds(588, 455, 74, 104);
 		frmGuessWho.getContentPane().add(player16);
 		
 		JLabel player17 = new JLabel("new");
-		player17.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg"));
+		player17.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg"));
 		player17.setForeground(Color.WHITE);
 		player17.setBackground(Color.WHITE);
 		player17.setBounds(674, 455, 74, 104);
 		frmGuessWho.getContentPane().add(player17);
 		
 		JLabel player18 = new JLabel("new");
-		player18.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg"));
+		player18.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg"));
 		player18.setHorizontalAlignment(SwingConstants.LEFT);
 		player18.setForeground(Color.WHITE);
 		player18.setBackground(Color.WHITE);
@@ -182,42 +183,42 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(player18);
 		
 		JLabel player19 = new JLabel("new");
-		player19.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg"));
+		player19.setIcon(new ImageIcon(path + "\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg"));
 		player19.setForeground(Color.WHITE);
 		player19.setBackground(Color.WHITE);
 		player19.setBounds(330, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player19);
 		
 		JLabel player20 = new JLabel("new");
-		player20.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg"));
+		player20.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg"));
 		player20.setForeground(Color.WHITE);
 		player20.setBackground(Color.WHITE);
 		player20.setBounds(416, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player20);
 		
 		JLabel player21 = new JLabel("new");
-		player21.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg"));
+		player21.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg"));
 		player21.setForeground(Color.WHITE);
 		player21.setBackground(Color.WHITE);
 		player21.setBounds(502, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player21);
 		
 		JLabel player22 = new JLabel("new");
-		player22.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg"));
+		player22.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg"));
 		player22.setForeground(Color.WHITE);
 		player22.setBackground(Color.WHITE);
 		player22.setBounds(588, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player22);
 		
 		JLabel player23 = new JLabel("new");
-		player23.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg"));
+		player23.setIcon(new ImageIcon(path + "\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg"));
 		player23.setForeground(Color.WHITE);
 		player23.setBackground(Color.WHITE);
 		player23.setBounds(674, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player23);
 		
 		JLabel player24 = new JLabel("new");
-		player24.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
+		player24.setIcon(new ImageIcon(path + "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
 		player24.setForeground(Color.WHITE);
 		player24.setBackground(Color.WHITE);
 		player24.setBounds(760, 568, 74, 104);
@@ -251,7 +252,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(PlayersLeftForEnemy);
 		
 		JLabel BackgroundForPlayer = new JLabel("New label");
-		BackgroundForPlayer.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\questionbackground1.png"));
+		BackgroundForPlayer.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		BackgroundForPlayer.setBounds(846, 410, 66, 72);
 		frmGuessWho.getContentPane().add(BackgroundForPlayer);
 		
@@ -263,7 +264,7 @@ public class MainGamePanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							PauseMenu window = new PauseMenu();
+							PauseMenu window = new PauseMenu(frmGuessWho);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -272,7 +273,7 @@ public class MainGamePanel {
 				});
 			}
 		});
-		Options.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\options1 - \u0391\u03BD\u03C4\u03AF\u03B3\u03C1\u03B1\u03C6\u03BF.png"));
+		Options.setIcon(new ImageIcon(path + "\\options1 - \u0391\u03BD\u03C4\u03AF\u03B3\u03C1\u03B1\u03C6\u03BF.png"));
 		Options.setBounds(34, 617, 74, 63);
 		frmGuessWho.getContentPane().add(Options);
 		
@@ -282,7 +283,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(PlayerTitleForNumberLeft);
 		
 		JLabel BckgroundForEnemy = new JLabel("New label");
-		BckgroundForEnemy.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\questionbackground1.png"));
+		BckgroundForEnemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		BckgroundForEnemy.setBounds(961, 410, 66, 72);
 		frmGuessWho.getContentPane().add(BckgroundForEnemy);
 		
@@ -297,27 +298,27 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(question_title);
 		
 		JLabel Background_questions = new JLabel("New label");
-		Background_questions.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\questionbackground1.png"));
+		Background_questions.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		Background_questions.setBounds(12, 18, 185, 464);
 		frmGuessWho.getContentPane().add(Background_questions);
 		
 		JLabel enemy_photo = new JLabel("New label");
-		enemy_photo.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\question_face1.png"));
+		enemy_photo.setIcon(new ImageIcon(path + "\\question_face1.png"));
 		enemy_photo.setBounds(487, 37, 102, 132);
 		frmGuessWho.getContentPane().add(enemy_photo);
 		
 		JLabel background_photo_enemy = new JLabel("New label");
-		background_photo_enemy.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\questionbackground1.png"));
+		background_photo_enemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		background_photo_enemy.setBounds(474, 18, 127, 170);
 		frmGuessWho.getContentPane().add(background_photo_enemy);
 		
 		JLabel playersicon = new JLabel("New label");
-		playersicon.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
+		playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
 		playersicon.setBounds(906, 553, 74, 104);
 		frmGuessWho.getContentPane().add(playersicon);
 		
 		JLabel playersbackground = new JLabel("New label");
-		playersbackground.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\questionbackground1.png"));
+		playersbackground.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		playersbackground.setBounds(890, 537, 102, 132);
 		frmGuessWho.getContentPane().add(playersbackground);
 		
@@ -326,13 +327,13 @@ public class MainGamePanel {
 		labelplayersicon.setBounds(875, 499, 133, 46);
 		frmGuessWho.getContentPane().add(labelplayersicon);
 		
-		JLabel cloud = new JLabel("");
-		cloud.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\cloud1.png"));
+		/*JLabel cloud = new JLabel("");
+		cloud.setIcon(new ImageIcon(path + "\\cloud1.png"));
 		cloud.setBounds(572, 18, 320, 149);
-		frmGuessWho.getContentPane().add(cloud);
+		frmGuessWho.getContentPane().add(cloud);*/
 		
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\background_main.jpg"));
+		background.setIcon(new ImageIcon(path + "\\MainBackround.jpg"));
 		background.setBounds(0, 0, 1050, 693);
 		frmGuessWho.getContentPane().add(background);
 	}
