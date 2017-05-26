@@ -41,9 +41,10 @@ public class Statistics {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+	String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?\r\n");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\workspace\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setBounds(100, 100, 521, 371);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -53,7 +54,7 @@ public class Statistics {
 		frmGuessWho.getContentPane().add(btnBack);
 		
 		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\question-mark-background-vector.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 503, 326);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}

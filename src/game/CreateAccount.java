@@ -44,8 +44,9 @@ public class CreateAccount {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\workspace\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setTitle("Guess Who ?");
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,7 +104,7 @@ public class CreateAccount {
 		AccountName.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\question-mark-background-vector.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}
