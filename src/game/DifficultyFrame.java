@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -12,6 +15,7 @@ import javax.swing.JButton;
 
 public class DifficultyFrame {
 
+	private int difficultyLevel; //0: easy level , 1: hard level
 	JFrame frmGuessWho;
 
 	/**
@@ -50,13 +54,48 @@ public class DifficultyFrame {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		
-		JButton button_1 = new JButton("\u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF");
-		button_1.setBounds(171, 148, 99, 25);
-		frmGuessWho.getContentPane().add(button_1);
+		JButton hardLevelButton = new JButton("\u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF");
+		hardLevelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				difficultyLevel=1;
+				frmGuessWho.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel();
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		hardLevelButton.setBounds(171, 148, 99, 25);
+		frmGuessWho.getContentPane().add(hardLevelButton);
 		
-		JButton button = new JButton("\u0395\u03CD\u03BA\u03BF\u03BB\u03BF");
-		button.setBounds(171, 85, 99, 25);
-		frmGuessWho.getContentPane().add(button);
+		JButton easyLevelButton = new JButton("\u0395\u03CD\u03BA\u03BF\u03BB\u03BF");
+		easyLevelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				difficultyLevel=0;
+				frmGuessWho.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel();
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				
+			}
+		});
+		easyLevelButton.setBounds(171, 85, 99, 25);
+		frmGuessWho.getContentPane().add(easyLevelButton);
 		
 		JLabel label = new JLabel("\u0395\u03C0\u03AD\u03BB\u03B5\u03BE\u03B5 \u03B5\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF:");
 		label.setForeground(Color.BLACK);
@@ -69,5 +108,11 @@ public class DifficultyFrame {
 		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(lblNewLabel);
+		
+		
+	}
+
+	public int getDifficultyLevel() {
+		return difficultyLevel;
 	}
 }
