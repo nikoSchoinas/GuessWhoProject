@@ -86,7 +86,7 @@ public final class Initialization {
 		Question Q8 = new Question(7,"black skin");
 		Question Q9 = new Question(8,"glasses");
 		Question Q10 = new Question(9,"hat");
-		Question Q11 = new Question(10,"beard or moustache");
+		Question Q11 = new Question(10,"beard/moustache");
 		Question Q12 = new Question(11,"boy");
 		
 		questionlist.add(Q1);
