@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ArrayList<Face> faceslist = new ArrayList<Face>();
+	/*	ArrayList<Face> faceslist = new ArrayList<Face>();
 		ArrayList<Question> questionlist = new ArrayList<Question>();
 
 		Initialization.setFaces();//initialize faces of the game
@@ -25,7 +25,9 @@ public class Main {
 		System.out.println(questionlist.get(k).getCharacteristic());
 		questionlist.get(k).deleteFaces(faceslist);
 		questionlist.remove(k);
-		}
+		}*/
+		StartMenu window= new StartMenu();
+		window.frmGuessWho.setVisible(true);
 	}
 
 }
