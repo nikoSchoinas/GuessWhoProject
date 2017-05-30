@@ -62,8 +62,8 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel();
-							window.frmGuessWho.setVisible(true);
+							ChoosePlayerFrame window = new ChoosePlayerFrame();
+							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
 							e.printStackTrace();
@@ -83,8 +83,8 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel();
-							window.frmGuessWho.setVisible(true);
+							ChoosePlayerFrame window = new ChoosePlayerFrame();
+							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
 							e.printStackTrace();
