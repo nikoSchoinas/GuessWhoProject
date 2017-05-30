@@ -76,18 +76,18 @@ public final class Initialization {
 	}
 	
 	public static void setQuestion(){
-		Question Q1 = new Question(0,"black hair");
-		Question Q2 = new Question(1,"blonde hair");
-		Question Q3 = new Question(2,"white hair");
-		Question Q4 = new Question(3,"brown hair");
-		Question Q5 = new Question(4,"blue eyes");
-		Question Q6 = new Question(5,"brown eyes");
-		Question Q7 = new Question(6,"green eyes");
-		Question Q8 = new Question(7,"black skin");
-		Question Q9 = new Question(8,"glasses");
-		Question Q10 = new Question(9,"hat");
-		Question Q11 = new Question(10,"beard/moustache");
-		Question Q12 = new Question(11,"boy");
+		Question Q1 = new Question(0,"μαύρα μαλλιά");
+		Question Q2 = new Question(1,"ξανθά μαλλιά");
+		Question Q3 = new Question(2,"άσπρα μαλλιά");
+		Question Q4 = new Question(3,"καστανά μαλλιά");
+		Question Q5 = new Question(4,"μπλε μάτια");
+		Question Q6 = new Question(5,"καστανά μάτια");
+		Question Q7 = new Question(6,"πράσινα μάτια");
+		Question Q8 = new Question(7,"μαύρο δέρμα");
+		Question Q9 = new Question(8,"γυαλιά");
+		Question Q10 = new Question(9,"καπέλο");
+		Question Q11 = new Question(10,"γενειάδα/μουστάκι");
+		Question Q12 = new Question(11,"αγόρι");
 		
 		questionlist.add(Q1);
 		questionlist.add(Q2);
