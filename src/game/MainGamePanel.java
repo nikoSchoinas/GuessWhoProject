@@ -50,6 +50,11 @@ public class MainGamePanel {
 	private int p22 = 1;
 	private int p23 = 1;
 	private int p24 = 1;
+	private ArrayList<Face> faceslist = new ArrayList<Face>();
+	private ArrayList<Question> questionList = new ArrayList<Question>();
+	private Question playerQuestion = null;
+	private int selectedFaceCode;
+	private Face selectedFace;
 
 
 	/**
@@ -80,14 +85,10 @@ public class MainGamePanel {
 	 */
 	private void initialize() {
 
-		ArrayList<Face> faceslist = new ArrayList<Face>();
-		ArrayList<Question> questionlist = new ArrayList<Question>();
-
 		Initialization.setFaces();//initialize faces of the game
 		faceslist = Initialization.getFaceslist();//save faces into arraylist
 		Initialization.setQuestion();
-		questionlist = Initialization.getQuestionlist();//save questions into arraylist
-		Question playerQuestion = null ;
+		questionList = Initialization.getQuestionlist();//save questions into arraylist
 
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
@@ -514,7 +515,18 @@ public class MainGamePanel {
 		player24.setBackground(Color.WHITE);
 		player24.setBounds(760, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player24);
-
+		
+		DefaultListModel model = new DefaultListModel();
+		for(Question q : questionList){
+			model.addElement(q.getCharacteristic());
+		}
+		JList questionJList = new JList();
+		questionJList.setModel(model);
+		questionJList.setFont(new Font("Tahoma", Font.BOLD, 12));
+		questionJList.setFixedCellHeight(25);
+		questionJList.setBounds(10, 83, 284, 307);
+		frmGuessWho.getContentPane().add(questionJList);
+				
 		JButton yesButton = new JButton("\u039D\u03B1\u03B9");
 		yesButton.setBounds(632, 168, 97, 25);
 		frmGuessWho.getContentPane().add(yesButton);
@@ -522,13 +534,21 @@ public class MainGamePanel {
 		JButton noButton = new JButton("\u039F\u03C7\u03B9");
 		noButton.setBounds(741, 168, 97, 25);
 		frmGuessWho.getContentPane().add(noButton);
-
+		
 		JButton okButton = new JButton("\u039F\u039A");
-		okButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
+		okButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String selectedQuestion = (String)questionJList.getSelectedValue();
+				//Question playerQuestion = null ;
+				for (Question q : questionList){
+					if (q.getCharacteristic().equals(selectedQuestion))
+						playerQuestion = q;
+				}
 			}
 		});
+		
+		
 		okButton.setBounds(97, 410, 97, 25);
 		frmGuessWho.getContentPane().add(okButton);
 
@@ -588,9 +608,9 @@ public class MainGamePanel {
 		EnemyTitleForNumberLeft.setBounds(961, 381, 77, 16);
 		frmGuessWho.getContentPane().add(EnemyTitleForNumberLeft);
 
-		JLabel question_title = new JLabel("\u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2:");
+		JLabel question_title = new JLabel("\u0388\u03BB\u03B5\u03B3\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03B1\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5 \u03B3\u03B9\u03B1:");
 		question_title.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		question_title.setBounds(97, 47, 127, 25);
+		question_title.setBounds(10, 18, 284, 54);
 		frmGuessWho.getContentPane().add(question_title);
 
 		JLabel enemy_photo = new JLabel("New label");
@@ -621,25 +641,12 @@ public class MainGamePanel {
 		/*JLabel cloud = new JLabel("");
 		cloud.setIcon(new ImageIcon(path + "\\cloud1.png"));
 		cloud.setBounds(572, 18, 320, 149);
-		frmGuessWho.getContentPane().add(cloud);*/
-
-		DefaultListModel<String> model = new DefaultListModel<String>();
-		for(Question q : questionlist){
-			if (q.getCodeQuestion()== 11)
-				model.addElement("Is your player a " +q.getCharacteristic() + " ?");
-			model.addElement("Does your player have " +q.getCharacteristic() + " ?");
-		}
+		frmGuessWho.getContentPane().add(cloud);*/		
 
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(path + "\\MainBackround.jpg"));
 		background.setBounds(0, 0, 1050, 693);
 		frmGuessWho.getContentPane().add(background);
-		JList<String> questionList = new JList<String>(model);
-		questionList.setFont(new Font("Tahoma", Font.BOLD, 12));
-		questionList.setFixedCellHeight(25);
-		questionList.setBounds(10, 83, 284, 307);
-		frmGuessWho.getContentPane().add(questionList);
-
-
+		
 	}
 }
