@@ -14,10 +14,12 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Statistics {
-
+	private String playersName;
 	JFrame frmGuessWho;
 	private JLabel win_label_easy;
 	private JLabel lose_label_easy;
@@ -36,12 +38,16 @@ public class Statistics {
 	private JLabel WinsHard;
 	private JLabel LoseHard;
 	private JLabel GamesHard;
+	private JLabel lblNewLabel;
+	
+
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		String path = System.getProperty("user.home") + "/Desktop/Game";
+	/*public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,12 +59,14 @@ public class Statistics {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the application.
 	 */
-	public Statistics() {
+	public Statistics(String playersName) {
+		this.playersName = playersName;
 		initialize();
+		
 	}
 
 	/**
@@ -67,115 +75,152 @@ public class Statistics {
 	private void initialize() {
 	String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\student\\Desktop\\Game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path + "\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setTitle("Guess Who?\r\n");
-		frmGuessWho.setBounds(100, 100, 512, 379);
+		frmGuessWho.setBounds(100, 100, 512, 355);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frmGuessWho.dispose();
+				Mainframe window = new Mainframe(playersName);
+				window.frmGuessWho.setVisible(true);
 			}
 		});
 		btnBack.setBounds(201, 276, 97, 25);
 		frmGuessWho.getContentPane().add(btnBack);
-		
-		Name = new JLabel("New label");
+		FileEditor rankFile = new FileEditor();
+		int nameIndex = rankFile.searchEditor(playersName);
+		ArrayList<GamerProfile> playersArray = rankFile.getRankFile();
+		Name = new JLabel(playersArray.get(nameIndex).getName());
+		Name.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Name.setHorizontalAlignment(SwingConstants.CENTER);
+		Name.setForeground(Color.BLACK);
+		Name.setBackground(Color.LIGHT_GRAY);
 		Name.setBounds(31, 127, 102, 39);
 		frmGuessWho.getContentPane().add(Name);
 		
-		Points = new JLabel("New label");
-		Points.setBounds(153, 130, 70, 33);
+		Points = new JLabel(Integer.toString(playersArray.get(nameIndex).getPoints()));
+		Points.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Points.setHorizontalAlignment(SwingConstants.CENTER);
+		Points.setBackground(Color.LIGHT_GRAY);
+		Points.setBounds(153, 127, 46, 39);
 		frmGuessWho.getContentPane().add(Points);
 		
-		WinsEasy = new JLabel("New label");
+		WinsEasy = new JLabel(Integer.toString(playersArray.get(nameIndex).getWinsEasy()));
+		WinsEasy.setFont(new Font("Tahoma", Font.BOLD, 13));
+		WinsEasy.setHorizontalAlignment(SwingConstants.CENTER);
+		WinsEasy.setBackground(Color.LIGHT_GRAY);
 		WinsEasy.setBounds(244, 77, 70, 39);
 		frmGuessWho.getContentPane().add(WinsEasy);
 		
-		LoseEasy = new JLabel("New label");
+		LoseEasy = new JLabel(Integer.toString(playersArray.get(nameIndex).getLosesEasy()));
+		LoseEasy.setFont(new Font("Tahoma", Font.BOLD, 13));
+		LoseEasy.setHorizontalAlignment(SwingConstants.CENTER);
+		LoseEasy.setBackground(Color.LIGHT_GRAY);
 		LoseEasy.setBounds(323, 77, 70, 39);
 		frmGuessWho.getContentPane().add(LoseEasy);
 		
-		GamesEasy = new JLabel("New label");
+		GamesEasy = new JLabel(Integer.toString(playersArray.get(nameIndex).getNumberOfEasy()));
+		GamesEasy.setFont(new Font("Tahoma", Font.BOLD, 13));
+		GamesEasy.setHorizontalAlignment(SwingConstants.CENTER);
+		GamesEasy.setBackground(Color.LIGHT_GRAY);
 		GamesEasy.setBounds(404, 77, 70, 39);
 		frmGuessWho.getContentPane().add(GamesEasy);
 		
-		WinsHard = new JLabel("New label");
+		WinsHard = new JLabel(Integer.toString(playersArray.get(nameIndex).getWinsHard()));
+		WinsHard.setFont(new Font("Tahoma", Font.BOLD, 13));
+		WinsHard.setHorizontalAlignment(SwingConstants.CENTER);
+		WinsHard.setBackground(Color.LIGHT_GRAY);
 		WinsHard.setBounds(244, 206, 70, 33);
 		frmGuessWho.getContentPane().add(WinsHard);
 		
-		LoseHard = new JLabel("New label");
+		LoseHard = new JLabel(Integer.toString(playersArray.get(nameIndex).getLosesHard()));
+		LoseHard.setFont(new Font("Tahoma", Font.BOLD, 13));
+		LoseHard.setHorizontalAlignment(SwingConstants.CENTER);
+		LoseHard.setBackground(Color.LIGHT_GRAY);
 		LoseHard.setBounds(323, 206, 70, 33);
 		frmGuessWho.getContentPane().add(LoseHard);
 		
-		GamesHard = new JLabel("New label");
-		GamesHard.setBounds(404, 206, 71, 33);
+		GamesHard = new JLabel(Integer.toString(playersArray.get(nameIndex).getNumberOfHard()));
+		GamesHard.setFont(new Font("Tahoma", Font.BOLD, 13));
+		GamesHard.setHorizontalAlignment(SwingConstants.CENTER);
+		GamesHard.setBackground(Color.LIGHT_GRAY);
+		GamesHard.setBounds(404, 206, 70, 33);
 		frmGuessWho.getContentPane().add(GamesHard);
 		
-		JLabel name_label = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1");
+		JLabel name_label = new JLabel("Name");
 		name_label.setHorizontalAlignment(SwingConstants.CENTER);
 		name_label.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		name_label.setBounds(31, 91, 102, 25);
 		frmGuessWho.getContentPane().add(name_label);
 		
-		JLabel points_label = new JLabel("\u03A0\u03CC\u03BD\u03C4\u03BF\u03B9");
+		JLabel points_label = new JLabel("Points");
 		points_label.setHorizontalAlignment(SwingConstants.CENTER);
 		points_label.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		points_label.setBounds(143, 91, 68, 25);
 		frmGuessWho.getContentPane().add(points_label);
 		
-		win_label_easy = new JLabel("\u039D\u03AF\u03BA\u03B5\u03C2");
+		win_label_easy = new JLabel("Wins");
 		win_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		win_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		win_label_easy.setBounds(244, 41, 69, 25);
 		frmGuessWho.getContentPane().add(win_label_easy);
 		
-		lose_label_easy = new JLabel("\u0389\u03C4\u03C4\u03B5\u03C2");
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.LIGHT_GRAY);
+		lblNewLabel.setBounds(20, 87, 202, 95);
+		frmGuessWho.getContentPane().add(lblNewLabel);
+		
+		lose_label_easy = new JLabel("Loses");
 		lose_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		lose_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lose_label_easy.setBounds(323, 41, 70, 25);
 		frmGuessWho.getContentPane().add(lose_label_easy);
 		
-		easy_level_label = new JLabel("\u0395\u03CD\u03BA\u03BF\u03BB\u03BF \u0395\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF");
+		easy_level_label = new JLabel("Easy Level");
+		easy_level_label.setBackground(Color.WHITE);
 		easy_level_label.setHorizontalAlignment(SwingConstants.CENTER);
 		easy_level_label.setFont(new Font("Times New Roman", Font.BOLD, 19));
-		easy_level_label.setBounds(244, 11, 221, 33);
+		easy_level_label.setBounds(244, 11, 230, 33);
 		frmGuessWho.getContentPane().add(easy_level_label);
 		
-		games_label_easy = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2");
+		games_label_easy = new JLabel("Games");
 		games_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		games_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		games_label_easy.setBounds(403, 41, 70, 25);
 		frmGuessWho.getContentPane().add(games_label_easy);
 		
-		lose_label_hard = new JLabel("\u0389\u03C4\u03C4\u03B5\u03C2");
+		lose_label_hard = new JLabel("Loses");
 		lose_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		lose_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lose_label_hard.setBounds(323, 171, 70, 25);
 		frmGuessWho.getContentPane().add(lose_label_hard);
 		
-		wins_label_hard = new JLabel("\u039D\u03AF\u03BA\u03B5\u03C2");
+		wins_label_hard = new JLabel("Wins");
 		wins_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		wins_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		wins_label_hard.setBounds(244, 171, 69, 25);
 		frmGuessWho.getContentPane().add(wins_label_hard);
 		
-		games_label_hard = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2");
+		games_label_hard = new JLabel("Games");
 		games_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		games_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		games_label_hard.setBounds(403, 171, 70, 25);
 		frmGuessWho.getContentPane().add(games_label_hard);
 		
-		hard_level_label = new JLabel("\u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF \u0395\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF");
+		hard_level_label = new JLabel("Hard Level");
+		hard_level_label.setBackground(Color.LIGHT_GRAY);
 		hard_level_label.setHorizontalAlignment(SwingConstants.CENTER);
 		hard_level_label.setFont(new Font("Times New Roman", Font.BOLD, 19));
-		hard_level_label.setBounds(244, 127, 230, 33);
+		hard_level_label.setBounds(244, 138, 230, 33);
 		frmGuessWho.getContentPane().add(hard_level_label);
 		
 		background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\student\\Desktop\\Game\\background_main.jpg"));
-		background.setBounds(0, 0, 625, 405);
+		background.setIcon(new ImageIcon("C:\\Users\\student\\Desktop\\Y8Pd8oV.jpg"));
+		background.setBounds(0, 0, 496, 316);
 		frmGuessWho.getContentPane().add(background);
 	}
 }
