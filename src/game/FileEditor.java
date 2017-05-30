@@ -17,7 +17,7 @@ public class FileEditor {
 
 	public FileEditor() {
 
-		File inputFile = new File("importFile.txt");
+		File inputFile = new File("statistics.txt");
 
 		try {
 			rankFile = new ArrayList<GamerProfile>();
@@ -32,6 +32,14 @@ public class FileEditor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<GamerProfile> getRankFile() {
+		return rankFile;
+	}
+
+	public void setRankFile(ArrayList<GamerProfile> rankFile) {
+		this.rankFile = rankFile;
 	}
 
 	public int searchEditor(String name) {
