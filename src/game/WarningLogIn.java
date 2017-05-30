@@ -11,10 +11,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class WarningLogIn {
 
-	private JFrame frmGuessWho;
+	JFrame frmGuessWho;
 
 	/**
 	 * Launch the application.
@@ -58,9 +60,15 @@ public class WarningLogIn {
 		frmGuessWho.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("\u039F\u039A");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		btnNewButton.setBackground(SystemColor.inactiveCaptionBorder);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frmGuessWho.dispose();
 			}
 		});
 		btnNewButton.setBounds(162, 65, 99, 25);

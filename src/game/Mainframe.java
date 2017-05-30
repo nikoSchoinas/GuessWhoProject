@@ -13,28 +13,18 @@ import java.awt.event.ActionEvent;
 public class Mainframe {
 
 	JFrame frmGuessWho;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Mainframe window = new Mainframe();
-					window.frmGuessWho.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private String playersName;
 	/**
 	 * Create the application.
 	 */
+	public Mainframe(String playersName) {
+		this.playersName = playersName;
+		initialize();
+		
+	}
 	public Mainframe() {
 		initialize();
+		
 	}
 
 	/**
@@ -76,7 +66,7 @@ public class Mainframe {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Statistics window = new Statistics();
+							Statistics window = new Statistics(playersName);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();

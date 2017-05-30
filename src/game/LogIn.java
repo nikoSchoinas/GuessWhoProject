@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -18,6 +19,7 @@ public class LogIn {
 
 	public JFrame frmGuessWho;
 	private JTextField AccountName;
+	private int find=0;
 
 	/**
 	 * Launch the application.
@@ -85,20 +87,24 @@ public class LogIn {
 		frmGuessWho.getContentPane().add(AccountName);
 		AccountName.setColumns(10);
 		
+	
+	
 		JButton LogInButton = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2\r\n");
 		LogInButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmGuessWho.setVisible(false);
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							LogIn window = new LogIn();
-							window.frmGuessWho.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+				String playersName = AccountName.getText();	
+				FileEditor rankFile = new FileEditor();
+				find = rankFile.searchEditor(playersName);
+				if(find==-1){
+					WarningLogIn window = new WarningLogIn();
+					window.frmGuessWho.setVisible(true);
+				}
+				else
+				{
+					frmGuessWho.dispose();
+					Mainframe window = new Mainframe(playersName);
+					window.frmGuessWho.setVisible(true);
+				}
 			}
 		});
 		LogInButton.setBounds(182, 141, 99, 25);
