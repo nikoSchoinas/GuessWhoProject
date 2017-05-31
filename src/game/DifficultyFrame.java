@@ -62,7 +62,7 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							ChoosePlayerFrame window = new ChoosePlayerFrame();
+							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel);
 							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
@@ -83,7 +83,7 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							ChoosePlayerFrame window = new ChoosePlayerFrame();
+							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel);
 							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
@@ -109,10 +109,5 @@ public class DifficultyFrame {
 		lblNewLabel.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 		
-		
-	}
-
-	public int getDifficultyLevel() {
-		return difficultyLevel;
 	}
 }
