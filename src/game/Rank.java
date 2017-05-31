@@ -1,29 +1,24 @@
 package game;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import java.awt.Toolkit;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
 import java.awt.Font;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.DefaultListModel;
-
-import java.awt.Color;
-import javax.swing.JTextPane;
-import javax.swing.JButton;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.SwingConstants;
 
 public class Rank {
 
 	JFrame frmGuessWho;
-	private DefaultListModel model;
+	private DefaultListModel model_Names = new DefaultListModel();
 
 	/**
 	 * Create the application.
@@ -45,6 +40,7 @@ public class Rank {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		FileEditor rankFile = new FileEditor();
+		rankFile.sortList();
 		ArrayList<GamerProfile> playersArray = rankFile.getRankFile();
 		
 		JButton BackButton = new JButton("Back\r\n");
@@ -66,13 +62,13 @@ public class Rank {
 		BackButton.setBounds(349, 117, 71, 25);
 		frmGuessWho.getContentPane().add(BackButton);
 		
-		JList list = new JList();
+		JList list_Name = new JList();
 		for(int i =0;i<playersArray.size();i++){
-			model.addElement(playersArray.get(i).getName());
+			model_Names.addElement(playersArray.get(i).getName());
 		}
-		list.setModel(model);
-		list.setBounds(107, 29, 101, 221);
-		frmGuessWho.getContentPane().add(list);
+		list_Name.setModel(model_Names);
+		list_Name.setBounds(107, 29, 101, 221);
+		frmGuessWho.getContentPane().add(list_Name);
 		
 		JLabel nameLabel = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1");
 		nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -84,25 +80,23 @@ public class Rank {
 		PointLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		PointLabel.setBounds(234, 3, 100, 25);
 		frmGuessWho.getContentPane().add(PointLabel);
+			
+		//JList list_1 = new JList();		
 		
-		JList NameList = new JList();
-		NameList.setBounds(125, 101, 1, 1);
-		frmGuessWho.getContentPane().add(NameList);
+		/*list_1.setBounds(238, 29, 101, 221);
+		frmGuessWho.getContentPane().add(list_1);*/
 		
-		JList PointList = new JList();
-		PointList.setBounds(272, 101, 1, 1);
-		frmGuessWho.getContentPane().add(PointList);
-		
-		JList list_1 = new JList();		
+		JList list_Points = new JList();
+		list_Points.setBounds(234, 29, 101, 221);
+		DefaultListModel model_Points = new DefaultListModel();
 		for(int i =0;i<playersArray.size();i++){
-			model.addElement(playersArray.get(i).getPoints());
+			model_Points.addElement(playersArray.get(i).getPoints());
 		}
-		list_1.setModel(model);
-		list_1.setBounds(238, 29, 101, 221);
-		frmGuessWho.getContentPane().add(list_1);
+		list_Points.setModel(model_Points);
+		frmGuessWho.getContentPane().add(list_Points);
 		
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon("C:\\Users\\kostas\\workspace\\game\\question-mark-background-vector.jpg"));
+		Background.setIcon(new ImageIcon(path + "\\Game\\18789887_10203173268287916_772035473_o.jpg"));
 		Background.setBounds(0, -5, 442, 268);
 		frmGuessWho.getContentPane().add(Background);
 	}
