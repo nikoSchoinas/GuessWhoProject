@@ -151,19 +151,19 @@ public class Statistics {
 		GamesHard.setBounds(404, 206, 70, 33);
 		frmGuessWho.getContentPane().add(GamesHard);
 		
-		JLabel name_label = new JLabel("Name");
+		JLabel name_label = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1");
 		name_label.setHorizontalAlignment(SwingConstants.CENTER);
 		name_label.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		name_label.setBounds(31, 91, 102, 25);
 		frmGuessWho.getContentPane().add(name_label);
 		
-		JLabel points_label = new JLabel("Points");
+		JLabel points_label = new JLabel("\u03A0\u03CC\u03BD\u03C4\u03BF\u03B9");
 		points_label.setHorizontalAlignment(SwingConstants.CENTER);
 		points_label.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		points_label.setBounds(143, 91, 68, 25);
 		frmGuessWho.getContentPane().add(points_label);
 		
-		win_label_easy = new JLabel("Wins");
+		win_label_easy = new JLabel("\u039D\u03AF\u03BA\u03B5\u03C2");
 		win_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		win_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		win_label_easy.setBounds(244, 41, 69, 25);
@@ -174,44 +174,44 @@ public class Statistics {
 		lblNewLabel.setBounds(20, 87, 202, 95);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 		
-		lose_label_easy = new JLabel("Loses");
+		lose_label_easy = new JLabel("\u0389\u03C4\u03C4\u03B5\u03C2");
 		lose_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		lose_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lose_label_easy.setBounds(323, 41, 70, 25);
 		frmGuessWho.getContentPane().add(lose_label_easy);
 		
-		easy_level_label = new JLabel("Easy Level");
+		easy_level_label = new JLabel("\u0395\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF \u0395\u03CD\u03BA\u03BF\u03BB\u03BF");
 		easy_level_label.setBackground(Color.WHITE);
 		easy_level_label.setHorizontalAlignment(SwingConstants.CENTER);
 		easy_level_label.setFont(new Font("Times New Roman", Font.BOLD, 19));
 		easy_level_label.setBounds(244, 11, 230, 33);
 		frmGuessWho.getContentPane().add(easy_level_label);
 		
-		games_label_easy = new JLabel("Games");
+		games_label_easy = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2");
 		games_label_easy.setHorizontalAlignment(SwingConstants.CENTER);
 		games_label_easy.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		games_label_easy.setBounds(403, 41, 70, 25);
 		frmGuessWho.getContentPane().add(games_label_easy);
 		
-		lose_label_hard = new JLabel("Loses");
+		lose_label_hard = new JLabel("\u0389\u03C4\u03C4\u03B5\u03C2");
 		lose_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		lose_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lose_label_hard.setBounds(323, 171, 70, 25);
 		frmGuessWho.getContentPane().add(lose_label_hard);
 		
-		wins_label_hard = new JLabel("Wins");
+		wins_label_hard = new JLabel("\u039D\u03AF\u03BA\u03B5\u03C2");
 		wins_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		wins_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		wins_label_hard.setBounds(244, 171, 69, 25);
 		frmGuessWho.getContentPane().add(wins_label_hard);
 		
-		games_label_hard = new JLabel("Games");
+		games_label_hard = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2");
 		games_label_hard.setHorizontalAlignment(SwingConstants.CENTER);
 		games_label_hard.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		games_label_hard.setBounds(403, 171, 70, 25);
 		frmGuessWho.getContentPane().add(games_label_hard);
 		
-		hard_level_label = new JLabel("Hard Level");
+		hard_level_label = new JLabel("\u0395\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF \u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF");
 		hard_level_label.setBackground(Color.LIGHT_GRAY);
 		hard_level_label.setHorizontalAlignment(SwingConstants.CENTER);
 		hard_level_label.setFont(new Font("Times New Roman", Font.BOLD, 19));
@@ -219,7 +219,7 @@ public class Statistics {
 		frmGuessWho.getContentPane().add(hard_level_label);
 		
 		background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\student\\Desktop\\Y8Pd8oV.jpg"));
+		background.setIcon(new ImageIcon(path + "\\Game\\18789887_10203173268287916_772035473_o.jpg"));
 		background.setBounds(0, 0, 496, 316);
 		frmGuessWho.getContentPane().add(background);
 	}
