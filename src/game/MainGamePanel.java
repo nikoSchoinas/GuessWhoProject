@@ -50,11 +50,14 @@ public class MainGamePanel {
 	private int p22 = 1;
 	private int p23 = 1;
 	private int p24 = 1;
+	
 	private ArrayList<Face> faceslist = new ArrayList<Face>();
 	private ArrayList<Question> questionList = new ArrayList<Question>();
 	private Question playerQuestion = null;
-	private int selectedFaceCode;
 	private Face selectedFace;
+	
+	private int selectedFaceCode;
+	private int difficultyLevel;
 
 
 	/**
@@ -77,6 +80,12 @@ public class MainGamePanel {
 	 * Create the application.
 	 */
 	public MainGamePanel() {
+		initialize();
+	}
+	
+	public MainGamePanel(int levelSelection, int selectedFaceCode) {
+		difficultyLevel = levelSelection;
+		this.selectedFaceCode = selectedFaceCode;
 		initialize();
 	}
 
