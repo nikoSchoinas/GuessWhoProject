@@ -50,11 +50,14 @@ public class MainGamePanel {
 	private int p22 = 1;
 	private int p23 = 1;
 	private int p24 = 1;
+	
 	private ArrayList<Face> faceslist = new ArrayList<Face>();
 	private ArrayList<Question> questionList = new ArrayList<Question>();
 	private Question playerQuestion = null;
-	private int selectedFaceCode;
 	private Face selectedFace;
+	
+	private int selectedFaceCode;
+	private int difficultyLevel;
 
 
 	/**
@@ -79,6 +82,12 @@ public class MainGamePanel {
 	public MainGamePanel() {
 		initialize();
 	}
+	
+	public MainGamePanel(int levelSelection, int selectedFaceCode) {
+		difficultyLevel = levelSelection;
+		this.selectedFaceCode = selectedFaceCode;
+		initialize();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -99,37 +108,21 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 
-		JLabel player1 = new JLabel("New label");
-		player1.addMouseListener(new MouseAdapter() {
+		JLabel player4 = new JLabel("New label");
+		player4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if(p1==1){
-					player1.setIcon(new ImageIcon(path + "\\backofcards.png"));
-					p1=0;
+				if(p4==1){
+					player4.setIcon(new ImageIcon(path + "\\backofcards.png"));
+					p4=0;
 				}else{
-					player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
-					p1=1;}
+					player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+					p4=1;}
 			}
 		});
-		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
-		player1.setBounds(588, 221, 74, 104);
-		frmGuessWho.getContentPane().add(player1);
-
-		JLabel player2 = new JLabel("New label");
-		player2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(p2==1){
-					player2.setIcon(new ImageIcon(path + "\\backofcards.png"));
-					p2=0;
-				}else{
-					player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
-					p2=1;}
-			}
-		});
-		player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
-		player2.setBounds(502, 221, 74, 104);
-		frmGuessWho.getContentPane().add(player2);
+		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+		player4.setBounds(588, 221, 74, 104);
+		frmGuessWho.getContentPane().add(player4);
 
 		JLabel player3 = new JLabel("New label");
 		player3.addMouseListener(new MouseAdapter() {
@@ -139,29 +132,29 @@ public class MainGamePanel {
 					player3.setIcon(new ImageIcon(path + "\\backofcards.png"));
 					p3=0;
 				}else{
-					player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+					player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
 					p3=1;}
 			}
 		});
-		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
-		player3.setBounds(416, 221, 74, 104);
+		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		player3.setBounds(502, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player3);
 
-		JLabel player4 = new JLabel("New label");
-		player4.addMouseListener(new MouseAdapter() {
+		JLabel player2 = new JLabel("New label");
+		player2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if(p4==1){
-					player4.setIcon(new ImageIcon(path + "\\backofcards.png"));
-					p4=0;
+				if(p2==1){
+					player2.setIcon(new ImageIcon(path + "\\backofcards.png"));
+					p2=0;
 				}else{
-					player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
-					p4=1;}
+					player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+					p2=1;}
 			}
 		});
-		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
-		player4.setBounds(674, 221, 74, 104);
-		frmGuessWho.getContentPane().add(player4);
+		player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+		player2.setBounds(416, 221, 74, 104);
+		frmGuessWho.getContentPane().add(player2);
 
 		JLabel player5 = new JLabel("New label");
 		player5.addMouseListener(new MouseAdapter() {
@@ -171,12 +164,12 @@ public class MainGamePanel {
 					player5.setIcon(new ImageIcon(path + "\\backofcards.png"));
 					p5=0;
 				}else{
-					player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
+					player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
 					p5=1;}
 			}
 		});
-		player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
-		player5.setBounds(760, 221, 74, 104);
+		player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
+		player5.setBounds(674, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player5);
 
 		JLabel player6 = new JLabel("New label");
@@ -187,13 +180,29 @@ public class MainGamePanel {
 					player6.setIcon(new ImageIcon(path + "\\backofcards.png"));
 					p6=0;
 				}else{
-					player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+					player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
 					p6=1;}
 			}
 		});
-		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
-		player6.setBounds(330, 221, 74, 104);
+		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
+		player6.setBounds(760, 221, 74, 104);
 		frmGuessWho.getContentPane().add(player6);
+
+		JLabel player1 = new JLabel("New label");
+		player1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(p1==1){
+					player1.setIcon(new ImageIcon(path + "\\backofcards.png"));
+					p1=0;
+				}else{
+					player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+					p1=1;}
+			}
+		});
+		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		player1.setBounds(330, 221, 74, 104);
+		frmGuessWho.getContentPane().add(player1);
 
 		JLabel player7 = new JLabel("New label");
 		player7.addMouseListener(new MouseAdapter() {

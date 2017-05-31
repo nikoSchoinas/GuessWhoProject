@@ -42,7 +42,7 @@ public class ChoosePlayerFrame {
 	private int p23 = 1;
 	private int p24 = 1;
 	private int selectedFaceCode;
-
+	private static int levelSelection;
 	/**
 	 * Launch the application.
 	 */
@@ -50,7 +50,7 @@ public class ChoosePlayerFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChoosePlayerFrame window = new ChoosePlayerFrame();
+					ChoosePlayerFrame window = new ChoosePlayerFrame(levelSelection);
 					window.choiceFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,8 +62,10 @@ public class ChoosePlayerFrame {
 	/**
 	 * Create the application.
 	 */
-	public ChoosePlayerFrame() {
+	public ChoosePlayerFrame(int levelSelection) {
+		this.levelSelection = levelSelection;
 		initialize();
+		//System.out.println(levelSelection);
 	}
 
 	/**
@@ -87,77 +89,161 @@ public class ChoosePlayerFrame {
 		label.setBounds(61, 22, 346, 54);
 		choiceFrame.getContentPane().add(label);
 
-		JLabel player1 = new JLabel("New label");
-		player1.addMouseListener(new MouseAdapter() {
+		JLabel player4 = new JLabel("New label");
+		player4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 1;
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
-		player1.setBounds(319, 133, 74, 104);
-		choiceFrame.getContentPane().add(player1);
-
-		JLabel player2 = new JLabel("New label");
-		player2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 2;
-			}
-		});
-		player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
-		player2.setBounds(233, 133, 74, 104);
-		choiceFrame.getContentPane().add(player2);
+		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+		player4.setBounds(319, 135, 74, 104);
+		choiceFrame.getContentPane().add(player4);
 
 		JLabel player3 = new JLabel("New label");
 		player3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 3;
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
-		player3.setBounds(147, 133, 74, 104);
+		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		player3.setBounds(233, 135, 74, 104);
 		choiceFrame.getContentPane().add(player3);
 
-		JLabel player4 = new JLabel("New label");
-		player4.addMouseListener(new MouseAdapter() {
+		JLabel player2 = new JLabel("New label");
+		player2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 4;
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
-		player4.setBounds(405, 133, 74, 104);
-		choiceFrame.getContentPane().add(player4);
+		player2.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+		player2.setBounds(147, 135, 74, 104);
+		choiceFrame.getContentPane().add(player2);
 
 		JLabel player5 = new JLabel("New label");
 		player5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 5;
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
-		player5.setBounds(491, 133, 74, 104);
+		player5.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
+		player5.setBounds(405, 135, 74, 104);
 		choiceFrame.getContentPane().add(player5);
 
 		JLabel player6 = new JLabel("New label");
 		player6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 6;
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
-		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
-		player6.setBounds(61, 133, 74, 104);
+		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
+		player6.setBounds(491, 135, 74, 104);
 		choiceFrame.getContentPane().add(player6);
+
+		JLabel player1 = new JLabel("New label");
+		player1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		player1.setBounds(61, 135, 74, 104);
+		choiceFrame.getContentPane().add(player1);
 
 		JLabel player7 = new JLabel("New label");
 		player7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 7;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player7.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
@@ -169,6 +255,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 8;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player8.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg"));
@@ -180,6 +278,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 9;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player9.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
@@ -193,6 +303,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 10;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player10.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg"));
@@ -206,6 +328,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 11;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player11.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg"));
@@ -219,6 +353,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 12;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player12.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg"));
@@ -232,6 +378,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 13;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player13.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg"));
@@ -245,6 +403,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 14;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player14.setIcon(new ImageIcon(path + "\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg"));
@@ -258,6 +428,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 15;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player15.setIcon(new ImageIcon(path + "\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg"));
@@ -271,6 +453,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 16;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player16.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg"));
@@ -284,6 +478,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 17;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player17.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg"));
@@ -297,6 +503,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 18;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player18.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg"));
@@ -311,6 +529,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 19;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player19.setIcon(new ImageIcon(path + "\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg"));
@@ -324,6 +554,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 20;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player20.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg"));
@@ -336,7 +578,18 @@ public class ChoosePlayerFrame {
 		player21.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 21;
+				selectedFaceCode = 21;choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player21.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg"));
@@ -350,6 +603,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 22;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player22.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg"));
@@ -363,6 +628,18 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 23;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		player23.setIcon(new ImageIcon(path + "\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg"));
@@ -376,23 +653,11 @@ public class ChoosePlayerFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				selectedFaceCode = 24;
-			}
-		});
-		player24.setIcon(new ImageIcon(path + "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
-		player24.setForeground(Color.WHITE);
-		player24.setBackground(Color.WHITE);
-		player24.setBounds(491, 480, 74, 104);
-		choiceFrame.getContentPane().add(player24);
-		
-		JButton btnOk = new JButton("OK");
-		btnOk.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
 				choiceFrame.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel();
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -402,10 +667,12 @@ public class ChoosePlayerFrame {
 				});
 			}
 		});
-		btnOk.setBounds(264, 614, 89, 23);
-		choiceFrame.getContentPane().add(btnOk);
-		
-		
+		player24.setIcon(new ImageIcon(path + "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
+		player24.setForeground(Color.WHITE);
+		player24.setBackground(Color.WHITE);
+		player24.setBounds(491, 480, 74, 104);
+		choiceFrame.getContentPane().add(player24);
+				
 	}
 
 	public int getSelectedFaceCode() {
