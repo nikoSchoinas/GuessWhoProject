@@ -19,11 +19,13 @@ public class Rank {
 
 	JFrame frmGuessWho;
 	private DefaultListModel model_Names = new DefaultListModel();
+	private String playersName;
 
 	/**
 	 * Create the application.
 	 */
-	public Rank() {
+	public Rank(String playerName) {
+		this.playersName=playerName;
 		initialize();
 	}
 
@@ -50,7 +52,7 @@ public class Rank {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Mainframe window = new Mainframe();
+							Mainframe window = new Mainframe(playersName);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
