@@ -85,7 +85,7 @@ public class Mainframe {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Rank window = new Rank();
+							Rank window = new Rank(playersName);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
