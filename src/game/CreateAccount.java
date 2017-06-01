@@ -97,7 +97,8 @@ public class CreateAccount {
 									});
 								}
 								else{
-									rankFile.writeFile(playersName);//Create account and  write it in the file.
+									rankFile.createProfile(playersName);//Create account and  write it in the file.
+									rankFile.writeFile("statistics.txt");
 									frmGuessWho.dispose();
 									Mainframe window = new Mainframe(playersName);
 									window.frmGuessWho.setVisible(true);
