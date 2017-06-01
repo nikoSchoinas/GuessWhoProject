@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 
 public class PauseMenu {
 
+	//Declaratons
 	static JFrame frmGuessWho;
 	static JFrame MainGamePanel;
 
@@ -45,6 +46,8 @@ public class PauseMenu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+	
+		//Panel's creation
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?\r\n");
@@ -53,11 +56,14 @@ public class PauseMenu {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		
+		//Labels shows tha the game is paused
 		JLabel lblGamePaused = new JLabel("GAME PAUSED");
 		lblGamePaused.setFont(new Font("Sylfaen", Font.PLAIN, 23));
 		lblGamePaused.setBounds(133, 44, 198, 36);
 		frmGuessWho.getContentPane().add(lblGamePaused);
 		
+		//The button which continues the game
 		JButton ContinueButton = new JButton("\u03A3\u03C5\u03BD\u03AD\u03C7\u03B5\u03B9\u03B1");
 		ContinueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -67,6 +73,7 @@ public class PauseMenu {
 		ContinueButton.setBounds(166, 107, 97, 25);
 		frmGuessWho.getContentPane().add(ContinueButton);
 		
+		//The button with whom you exit the game
 		JButton ExitButton = new JButton("\u0388\u03BE\u03BF\u03B4\u03BF\u03C2");
 		ExitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,6 +96,7 @@ public class PauseMenu {
 		ExitButton.setBounds(166, 145, 97, 25);
 		frmGuessWho.getContentPane().add(ExitButton);
 		
+		//Background's Creation
 		JLabel Background = new JLabel("\r\n");
 		Background.setIcon(new ImageIcon(path+"\\background_main.jpg"));
 		Background.setBounds(0, 0, 444, 267);
