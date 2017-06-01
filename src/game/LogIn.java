@@ -94,21 +94,22 @@ public class LogIn {
 			public void actionPerformed(ActionEvent arg0) {
 				String playersName = AccountName.getText();	
 				FileEditor rankFile = new FileEditor();
-				find = rankFile.searchEditor(playersName);
-				if(find==-1){
-					WarningLogIn window = new WarningLogIn();
+				find = rankFile.searchEditor(playersName);//checking file for the given user name
+				if(find==-1){							 //if the file doesn't contain this name
+					WarningLogIn window = new WarningLogIn();//creates a warning window
 					window.frmGuessWho.setVisible(true);
 				}
 				else
 				{
 					frmGuessWho.dispose();
-					Mainframe window = new Mainframe(playersName);
+					Mainframe window = new Mainframe(playersName);//the user was found and the main menu is opening
 					window.frmGuessWho.setVisible(true);
 				}
 			}
 		});
 		LogInButton.setBounds(182, 141, 99, 25);
 		frmGuessWho.getContentPane().add(LogInButton);
+		frmGuessWho.getRootPane().setDefaultButton(LogInButton);//set enter default button so it can be use by pressing enter
 		
 		JLabel Background = new JLabel("New label");
 		Background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
