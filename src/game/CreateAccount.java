@@ -80,11 +80,11 @@ public class CreateAccount {
 						
 						String playersName = AccountName.getText();	
 						FileEditor rankFile = new FileEditor();
-						find = rankFile.searchEditor(playersName);
+						find = rankFile.searchEditor(playersName);// searching the file for the given account name.
 						AccountName.setText(" ");
 						try {
-							if(find==-1){
-								if(playersName.contains(" ")){
+							if(find==-1){//if the file doesn't contain the account name
+								if(playersName.contains(" ")){//check if the given name has spaces.
 									EventQueue.invokeLater(new Runnable() {
 										public void run() {
 											try {
@@ -97,7 +97,7 @@ public class CreateAccount {
 									});
 								}
 								else{
-									rankFile.writeFile(playersName);
+									rankFile.writeFile(playersName);//Create account and  write it in the file.
 									frmGuessWho.dispose();
 									Mainframe window = new Mainframe(playersName);
 									window.frmGuessWho.setVisible(true);
@@ -146,7 +146,7 @@ public class CreateAccount {
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}
 	
-	public void setBlank(){
+	public void setBlank(){//Method that set blank the text area after a failed attempt to create an account.
 		AccountName.setText(" ");
 	}
 }
