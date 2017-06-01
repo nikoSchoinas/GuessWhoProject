@@ -112,7 +112,7 @@ public class LogIn {
 		
 		JLabel Background = new JLabel("New label");
 		Background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		Background.setBounds(0, 0, 432, 255);
+		Background.setBounds(0, 0, 432, 261);
 		frmGuessWho.getContentPane().add(Background);
 		frmGuessWho.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{frmGuessWho.getContentPane(), Background}));
 	}
