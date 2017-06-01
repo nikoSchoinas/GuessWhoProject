@@ -16,7 +16,7 @@ public class CreateAccount {
 
 	public JFrame frmGuessWho;
 	private JTextField AccountName;
-
+	private int find =0;
 	/**
 	 * Launch the application.
 	 */
@@ -53,6 +53,8 @@ public class CreateAccount {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		
+		
+		
 		JButton BackButton = new JButton("Back");
 		BackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -75,20 +77,54 @@ public class CreateAccount {
 		JButton CreateButton = new JButton("\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1");
 		CreateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmGuessWho.setVisible(false);
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
+						
+						String playersName = AccountName.getText();	
+						FileEditor rankFile = new FileEditor();
+						find = rankFile.searchEditor(playersName);
+						AccountName.setText(" ");
 						try {
-							LogIn window = new LogIn();
-							window.frmGuessWho.setVisible(true);
+							if(find==-1){
+								if(playersName.contains(" ")){
+									EventQueue.invokeLater(new Runnable() {
+										public void run() {
+											try {
+												WarningCreateAccount window = new WarningCreateAccount("\u03A4\u03BF \u03CC\u03BD\u03BF\u03BC\u03B1 \u03C7\u03C1\u03AE\u03C3\u03C4\u03B7 \u03B4\u03B5\u03BD \u03B5\u03C0\u03B9\u03C4\u03C1\u03AD\u03C0\u03B5\u03C4\u03B1\u03B9 \u03BD\u03B1 \u03C0\u03B5\u03C1\u03B9\u03AD\u03C7\u03B5\u03B9 \u03BA\u03B5\u03BD\u03AC ! ");
+												window.frmGuessWho.setVisible(true);
+											} catch (Exception e) {
+												e.printStackTrace();
+											}
+										}
+									});
+								}
+								else{
+									rankFile.writeFile(playersName);
+									frmGuessWho.dispose();
+									Mainframe window = new Mainframe(playersName);
+									window.frmGuessWho.setVisible(true);
+								}
+							}
+							else {
+								EventQueue.invokeLater(new Runnable() {
+									public void run() {
+										try {
+											WarningCreateAccount window = new WarningCreateAccount("\u03A4\u03BF \u03CC\u03BD\u03BF\u03BC\u03B1 \u03C7\u03C1\u03AE\u03C3\u03C4\u03B7 \u03B4\u03B5\u03BD \u03B5\u03C0\u03B9\u03C4\u03C1\u03AD\u03C0\u03B5\u03C4\u03B1\u03B9 \u03BD\u03B1 \u03C0\u03B5\u03C1\u03B9\u03AD\u03C7\u03B5\u03B9 \u03BA\u03B5\u03BD\u03AC ! ");
+											window.frmGuessWho.setVisible(true);
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+									}
+								});
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 				});
-			}
 			
-		});
+			
+
+		
+	
 		CreateButton.setBounds(182, 141, 99, 25);
 		frmGuessWho.getContentPane().add(CreateButton);
 		
@@ -103,9 +139,14 @@ public class CreateAccount {
 		frmGuessWho.getContentPane().add(AccountName);
 		AccountName.setColumns(10);
 		
+		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(lblNewLabel);
+	}
+	
+	public void setBlank(){
+		AccountName.setText(" ");
 	}
 }
