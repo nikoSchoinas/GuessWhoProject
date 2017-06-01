@@ -27,9 +27,10 @@ public class WarningCreateAccount {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\kostas\\Desktop\\Game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path +"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
 		frmGuessWho.setBounds(100, 100, 553, 207);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
