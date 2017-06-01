@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class Enemy {
 
+	//Declarations
 	private ArrayList<Face> faceslist = new ArrayList<Face>(); ;
 	private Face selectedEnemyFace;
 	
+	//Constructors
 	public Enemy(ArrayList<Face> faceslist){
 		this.faceslist = faceslist;
 		selectedEnemyFace = this.selectFace();
@@ -22,14 +24,16 @@ public class Enemy {
 		int maxDeletedFaces= -1;
 		int selectedQuestionIndex= -1;
 		int numOfDeletedFaces= -1;
-		
-		if(levelSelection==0){//easy level
+	
+		//How enemy choose his question at easy level
+		if(levelSelection==0){
 			Random r = new Random();
 			int Low = 0;
 			int High = questions.size()-1;
 			selectedQuestionIndex = r.nextInt(High-Low) + Low;
-			
-		}else{//difficult level
+		
+		//How enemy choose his question at hard level	
+		}else{
 			for(int i=0;i<questions.size();i++){
 				numOfDeletedFaces = questions.get(i).facesForDelete(faceslist, playerFace);
 				System.out.println(numOfDeletedFaces+"tic");
@@ -45,8 +49,8 @@ public class Enemy {
 		
 	}
 	
-	
-	public Face selectFace(){//computer's random selection of player
+	//Computer's random selection of player
+	public Face selectFace(){
 		Random r = new Random();
 		int Low = 1;
 		int High = 24;
