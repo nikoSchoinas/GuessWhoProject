@@ -128,6 +128,7 @@ public class CreateAccount {
 	
 		CreateButton.setBounds(182, 141, 99, 25);
 		frmGuessWho.getContentPane().add(CreateButton);
+		frmGuessWho.getRootPane().setDefaultButton(CreateButton);
 		
 		JLabel label = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1:");
 		label.setFont(new Font("Times New Roman", Font.BOLD, 21));

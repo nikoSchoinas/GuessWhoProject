@@ -97,6 +97,17 @@ public class Mainframe {
 		button_1.setBounds(159, 151, 123, 25);
 		frmGuessWho.getContentPane().add(button_1);
 		
+		JButton LogOutButton = new JButton("\u0388\u03BE\u03BF\u03B4\u03BF\u03C2");
+		LogOutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmGuessWho.dispose();
+				StartMenu window = new StartMenu();
+				window.frmGuessWho.setVisible(true);
+			}
+		});
+		LogOutButton.setBounds(159, 198, 123, 25);
+		frmGuessWho.getContentPane().add(LogOutButton);
+		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 432, 261);
