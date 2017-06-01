@@ -30,31 +30,10 @@ import javax.swing.JTextArea;
 public class MainGamePanel {
 
 	JFrame frmGuessWho;
-	private int p1 = 1;
-	private int p2 = 1;
-	private int p3 = 1;
-	private int p4 = 1;
-	private int p5 = 1;
-	private int p6 = 1;
-	private int p7 = 1;
-	private int p8 = 1;
-	private int p9 = 1;
-	private int p10 = 1;	/*	variables show if a card has been covered or not--->values 0=backside 1=frontside  */
-	private int p11 = 1;
-	private int p12 = 1;
-	private int p13 = 1;
-	private int p14 = 1;
-	private int p15 = 1;
-	private int p16 = 1;
-	private int p17 = 1;
-	private int p18 = 1;
-	private int p19 = 1;
-	private int p20 = 1;
-	private int p21= 1;
-	private int p22 = 1;
-	private int p23 = 1;
-	private int p24 = 1;
+
+	
 	private ArrayList<Integer> facesCover = new ArrayList<Integer>();
+	private int uncoveredFacesCounter;
 
 	private boolean playerTurn = true; /*when this variables are false opponent cannot push buttons*/
 	private boolean enemyTurn = false;
@@ -66,12 +45,14 @@ public class MainGamePanel {
 
 	private ArrayList<Face> enemyFacesList = new ArrayList<Face>();
 	private ArrayList<Question> enemyQuestionList = new ArrayList<Question>();
+	private boolean playerResponse;
 
 	private Question playerQuestion = null;
 	private Face selectedFace;
 
 	private int selectedFaceCode;
 	private int difficultyLevel;
+	private int selectedQuestionIndex;
 
 
 	private Enemy enemy;
@@ -111,11 +92,17 @@ public class MainGamePanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-		for(int i=1;i<26;i++)
-			facesCover.add(1);
+		
+		facesCover.add(null);
+		for(int i=1;i<25;i++)
+			facesCover.add(i, 1);
 		Initialization.setFaces();//initialize faces of the game
 		faceslist = Initialization.getFaceslist();//save faces into arraylist
+		for(Face face : faceslist){
+			if(face.getCodeFace()==selectedFaceCode){
+				selectedFace = face;
+			}
+		}
 		Initialization.setQuestion();
 		questionList = Initialization.getQuestionlist();//save questions into arraylist
 		enemyFacesList.addAll(faceslist);
@@ -131,9 +118,10 @@ public class MainGamePanel {
 		frmGuessWho.setLocationRelativeTo(null);
 
 		Enemy enemy = new Enemy(enemyFacesList);
-		enemyFace = enemy.selectFace();
+		//enemyFace = enemy.selectFace();
+		enemyFace = enemyFacesList.get(0);
 
-		text = "Επίλεξε Ερώτηση";
+		text = "Επιλέξτε Ερώτηση";
 		JTextArea textArea = new JTextArea(text);
 		textArea.setEditable(false);
 		textArea.setBounds(658, 40, 191, 72);
@@ -566,21 +554,13 @@ public class MainGamePanel {
 		questionJList.setFixedCellHeight(25);
 		questionJList.setBounds(10, 83, 284, 307);
 		frmGuessWho.getContentPane().add(questionJList);
-
-		JButton yesButton = new JButton("\u039D\u03B1\u03B9");
-		yesButton.setBounds(632, 168, 97, 25);
-		frmGuessWho.getContentPane().add(yesButton);
-
-		JButton noButton = new JButton("\u039F\u03C7\u03B9");
-		noButton.setBounds(741, 168, 97, 25);
-		frmGuessWho.getContentPane().add(noButton);
-
 		
 		JButton okButton = new JButton("\u039F\u039A");
 		okButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(playerTurn){
+					if(questionJList.getSelectedValue()!=null){
 					String selectedQuestion = (String)questionJList.getSelectedValue();
 					//Question playerQuestion = null ;
 					for (Question q : questionList){
@@ -589,18 +569,22 @@ public class MainGamePanel {
 					}
 					if(playerQuestion.questionResponse(enemyFace)){
 						text = "Ναι!";
+						model.remove(playerQuestion.getCodeQuestion());
+						model.insertElementAt(playerQuestion.getCharacteristic() + ": Ναι", playerQuestion.getCodeQuestion());
 					}
 					else{
 						text = "Όχι!";
+						model.remove(playerQuestion.getCodeQuestion());
+						model.insertElementAt(playerQuestion.getCharacteristic() + ": Όχι", playerQuestion.getCodeQuestion());
 					}
 					textArea.setText(text);
-					model.remove(playerQuestion.getCodeQuestion());
+					
+					playerTurn = false;
+					}
 				}
-				playerTurn = false;
+				
 			}
 		});
-
-
 		okButton.setBounds(97, 410, 97, 25);
 		frmGuessWho.getContentPane().add(okButton);
 
@@ -610,9 +594,9 @@ public class MainGamePanel {
 		PlayersLeftForMe.setBounds(881, 433, 32, 25);
 		frmGuessWho.getContentPane().add(PlayersLeftForMe);
 
-		JLabel NumberOfPlayers = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03C0\u03B1\u03B9\u03BA\u03C4\u03CE\u03BD:\r\n");
-		NumberOfPlayers.setFont(new Font("Tahoma", Font.BOLD, 16));
-		NumberOfPlayers.setBounds(871, 357, 149, 25);
+		JLabel NumberOfPlayers = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03C0\u03B1\u03B9\u03BA\u03C4\u03CE\u03BD \u03C3\u03C4\u03BF \u03C4\u03B1\u03BC\u03C0\u03BB\u03CC:\r\n");
+		NumberOfPlayers.setFont(new Font("Tahoma", Font.BOLD, 14));
+		NumberOfPlayers.setBounds(844, 348, 206, 25);
 		frmGuessWho.getContentPane().add(NumberOfPlayers);
 
 
@@ -625,6 +609,56 @@ public class MainGamePanel {
 		BackgroundForPlayer.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
 		BackgroundForPlayer.setBounds(861, 411, 66, 72);
 		frmGuessWho.getContentPane().add(BackgroundForPlayer);
+		
+		JButton yesButton = new JButton("\u039D\u03B1\u03B9");
+		yesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(playerTurn && enemyTurn){
+					playerResponse=true;
+					if(enemyQuestionList.get(selectedQuestionIndex).checkQuestion(selectedFace, playerResponse)){
+						enemyQuestionList.get(selectedQuestionIndex).facesForDelete(enemyFacesList, selectedFace);
+						enemyQuestionList.get(selectedQuestionIndex).deleteFaces(enemyFacesList);
+						enemyQuestionList.remove(selectedQuestionIndex);
+						PlayersLeftForEnemy.setText(String.valueOf(enemyFacesList.size()));
+						text = "Επιλέξτε ερώτηση";
+						textArea.setText(text);
+						enemyTurn=false;
+						
+					}
+					else{
+						text = "Ξανά σκεφτείτε το!";
+						textArea.setText(text);
+					}
+				}
+			}
+		});
+		yesButton.setBounds(632, 168, 97, 25);
+		frmGuessWho.getContentPane().add(yesButton);
+		
+		JButton noButton = new JButton("\u039F\u03C7\u03B9");
+		noButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(playerTurn && enemyTurn){
+					playerResponse=false;
+					if(enemyQuestionList.get(selectedQuestionIndex).checkQuestion(selectedFace, playerResponse)){
+						enemyQuestionList.get(selectedQuestionIndex).facesForDelete(enemyFacesList, selectedFace);
+						enemyQuestionList.get(selectedQuestionIndex).deleteFaces(enemyFacesList);
+						enemyQuestionList.remove(selectedQuestionIndex);
+						PlayersLeftForEnemy.setText(String.valueOf(enemyFacesList.size()));
+						text = "Επιλέξτε ερώτηση";
+						textArea.setText(text);
+						enemyTurn=false;
+					
+					}
+					else{
+						text = "Ξανά σκεφτείτε το!";
+						textArea.setText(text);
+					}
+				}
+			}
+		});
+		noButton.setBounds(741, 168, 97, 25);
+		frmGuessWho.getContentPane().add(noButton);
 
 		JLabel Options = new JLabel("");
 		Options.addMouseListener(new MouseAdapter() {
@@ -647,9 +681,9 @@ public class MainGamePanel {
 		Options.setBounds(34, 617, 74, 63);
 		frmGuessWho.getContentPane().add(Options);
 
-		JLabel PlayerTitleForNumberLeft = new JLabel("\u039F\u03B9 \u03C0\u03B1\u03AF\u03BA\u03C4\u03B5\u03C2 \u03BC\u03BF\u03C5");
+		JLabel PlayerTitleForNumberLeft = new JLabel("\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03CC");
 		PlayerTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		PlayerTitleForNumberLeft.setBounds(844, 380, 95, 16);
+		PlayerTitleForNumberLeft.setBounds(854, 384, 107, 16);
 		frmGuessWho.getContentPane().add(PlayerTitleForNumberLeft);
 
 		JLabel BckgroundForEnemy = new JLabel("New label");
@@ -659,7 +693,7 @@ public class MainGamePanel {
 
 		JLabel EnemyTitleForNumberLeft = new JLabel("\u0391\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5");
 		EnemyTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		EnemyTitleForNumberLeft.setBounds(961, 381, 77, 16);
+		EnemyTitleForNumberLeft.setBounds(961, 384, 77, 16);
 		frmGuessWho.getContentPane().add(EnemyTitleForNumberLeft);
 
 		JLabel question_title = new JLabel("\u0388\u03BB\u03B5\u03B3\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03B1\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5 \u03B3\u03B9\u03B1:");
@@ -757,7 +791,24 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(playerTurn==false && enemyTurn==false){
+				uncoveredFacesCounter=0;
+				for(int i=1;i<25;i++){
+					if(facesCover.get(i)==1){
+						uncoveredFacesCounter++;
+					}
+					selectedQuestionIndex =enemy.selectQuestionCode(difficultyLevel, selectedFace, enemyFacesList, enemyQuestionList);
+					text = "Έχει " + enemyQuestionList.get(selectedQuestionIndex).getCharacteristic()+";";
+					textArea.setText(text);
+				}
+				enemyTurn=true;
+				playerTurn=true;
 				
+				PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
+			}
+				else{
+					textArea.setText("Πρέπει να επιλέξετε ερώτηση!");
+				}
 			}
 		});
 
