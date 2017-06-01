@@ -112,6 +112,7 @@ public class Question {
 		return codeQuestion;
 	}
 
+	//Delete the faces from the arraylist depending the answer of the computer's question 
 	public void deleteFaces(ArrayList<Face> faces){
 		for(Face deletedFace : deletedFaces){
 			for(Face face : faces){
@@ -124,6 +125,7 @@ public class Question {
 		}
 	}
 	
+	//Choosing the answers at computer's question
 	public boolean questionResponse(Face enemyFace){
 
 		switch (codeQuestion) {
@@ -183,6 +185,7 @@ public class Question {
 		return false;
 	}
 	
+		//Checks the correctness of user's answer. This block was made to prevent cheating
 		public boolean checkQuestion(Face selectedFace, boolean playerResponse){
 
 		switch (codeQuestion) {
