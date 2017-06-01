@@ -17,32 +17,8 @@ import javax.swing.JButton;
 public class ChoosePlayerFrame {
 
 	JFrame choiceFrame;
-	private int p1 = 1;
-	private int p2 = 1;
-	private int p3 = 1;
-	private int p4 = 1;
-	private int p5 = 1;
-	private int p6 = 1;
-	private int p7 = 1;
-	private int p8 = 1;
-	private int p9 = 1;
-	private int p10 = 1;	/*	variables show if a card has been covered or not--->values 0=backside 1=frontside  */
-	private int p11 = 1;
-	private int p12 = 1;
-	private int p13 = 1;
-	private int p14 = 1;
-	private int p15 = 1;
-	private int p16 = 1;
-	private int p17 = 1;
-	private int p18 = 1;
-	private int p19 = 1;
-	private int p20 = 1;
-	private int p21= 1;
-	private int p22 = 1;
-	private int p23 = 1;
-	private int p24 = 1;
-	private int selectedFaceCode;
-	private static int levelSelection;
+	private int selectedFaceCode; //When you select a face, its code is saved at selectedFaceCode
+	private static int levelSelection; //The difficulty level is saved at levelSelection
 	/**
 	 * Launch the application.
 	 */
@@ -65,7 +41,6 @@ public class ChoosePlayerFrame {
 	public ChoosePlayerFrame(int levelSelection) {
 		this.levelSelection = levelSelection;
 		initialize();
-		//System.out.println(levelSelection);
 	}
 
 	/**
@@ -73,6 +48,7 @@ public class ChoosePlayerFrame {
 	 */
 	private void initialize() {
 		
+		//Window creation
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		choiceFrame = new JFrame();
 		choiceFrame.setTitle("Guess Who");
@@ -81,20 +57,45 @@ public class ChoosePlayerFrame {
 		choiceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		choiceFrame.getContentPane().setLayout(null);
 		choiceFrame.setLocationRelativeTo(null);
-	
 		
+		//Pad creation	
 		JLabel label = new JLabel("\u0395\u03C0\u03AF\u03BB\u03B5\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03C0\u03B1\u03AF\u03BA\u03C4\u03B7 \u03C3\u03BF\u03C5!");
 		label.setForeground(Color.WHITE);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 16));
 		label.setBounds(61, 11, 346, 54);
 		choiceFrame.getContentPane().add(label);
+		
+		//for every block of commands like this, there are : declarations of variables, mouse listener, and selectedFaceCode value assignment
+		//from player1 until player24
+		JLabel player1 = new JLabel("New label");
+		player1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				selectedFaceCode = 1;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		player1.setBounds(61, 60, 74, 104);
+		choiceFrame.getContentPane().add(player1);
 
 		JLabel player2 = new JLabel("New label");
 		player2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
+				selectedFaceCode = 2;
 				choiceFrame.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
@@ -113,34 +114,11 @@ public class ChoosePlayerFrame {
 		player2.setBounds(147, 60, 74, 104);
 		choiceFrame.getContentPane().add(player2);
 		
-		JLabel player4 = new JLabel("New label");
-		player4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
-				choiceFrame.dispose();
-				EventQueue.invokeLater(new Runnable(){
-					public void run(){
-						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
-							window.frmGuessWho.setVisible(true);
-						}
-						catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
-		player4.setBounds(319, 60, 74, 104);
-		choiceFrame.getContentPane().add(player4);
-		
 		JLabel player3 = new JLabel("New label");
 		player3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
+				selectedFaceCode = 3;
 				choiceFrame.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
@@ -158,12 +136,35 @@ public class ChoosePlayerFrame {
 		player3.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
 		player3.setBounds(233, 60, 74, 104);
 		choiceFrame.getContentPane().add(player3);
+		
+		JLabel player4 = new JLabel("New label");
+		player4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				selectedFaceCode = 4;
+				choiceFrame.dispose();
+				EventQueue.invokeLater(new Runnable(){
+					public void run(){
+						try{
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							window.frmGuessWho.setVisible(true);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		player4.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+		player4.setBounds(319, 60, 74, 104);
+		choiceFrame.getContentPane().add(player4);
 
 		JLabel player5 = new JLabel("New label");
 		player5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
+				selectedFaceCode = 5;
 				choiceFrame.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
@@ -186,7 +187,7 @@ public class ChoosePlayerFrame {
 		player6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
+				selectedFaceCode = 6;
 				choiceFrame.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
@@ -204,29 +205,6 @@ public class ChoosePlayerFrame {
 		player6.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg"));
 		player6.setBounds(491, 60, 74, 104);
 		choiceFrame.getContentPane().add(player6);
-
-		JLabel player1 = new JLabel("New label");
-		player1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				selectedFaceCode = 7;
-				choiceFrame.dispose();
-				EventQueue.invokeLater(new Runnable(){
-					public void run(){
-						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
-							window.frmGuessWho.setVisible(true);
-						}
-						catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		player1.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
-		player1.setBounds(61, 60, 74, 104);
-		choiceFrame.getContentPane().add(player1);
 
 		JLabel player7 = new JLabel("New label");
 		player7.addMouseListener(new MouseAdapter() {
@@ -674,11 +652,12 @@ public class ChoosePlayerFrame {
 		player24.setBounds(491, 405, 74, 104);
 		choiceFrame.getContentPane().add(player24);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Game\\backgroundpavlidis.jpg"));
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setBounds(0, -39, 626, 684);
-		choiceFrame.getContentPane().add(label_1);
+		//Block of commands that creates the background
+		JLabel background = new JLabel(""); 
+		background.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Game\\backgroundpavlidis.jpg"));
+		background.setHorizontalAlignment(SwingConstants.CENTER);
+		background.setBounds(0, -39, 626, 684);
+		choiceFrame.getContentPane().add(background);
 		
 		
 				

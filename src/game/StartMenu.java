@@ -48,6 +48,7 @@ public class StartMenu {
 	 */
 	private void initialize() {
 		
+		//Panel's creation
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?");
@@ -56,6 +57,8 @@ public class StartMenu {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		
+		//Login Button
 		JButton login_button = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2");
 		login_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,12 +74,11 @@ public class StartMenu {
 					}
 				});
 			}
-		});
-	
+		});	
 		login_button.setBounds(170, 73, 110, 31);
 		frmGuessWho.getContentPane().add(login_button);
 	
-		
+		//Create account button
 		JButton Create_account_button = new JButton("\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1\r\n");
 		Create_account_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -98,6 +100,7 @@ public class StartMenu {
 		Create_account_button.setBounds(170, 139, 110, 31);
 		frmGuessWho.getContentPane().add(Create_account_button);
 		
+		//Background's Creation
 		JLabel Background = new JLabel("New label");
 		Background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		Background.setBounds(0, 0, 442, 268);

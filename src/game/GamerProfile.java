@@ -1,7 +1,8 @@
 package game;
 
 public class GamerProfile implements Comparable<GamerProfile>{
-	
+			
+			//Variables' declarations
 			private String name;
 			private int points;
 			private int	winsEasy;
@@ -11,7 +12,7 @@ public class GamerProfile implements Comparable<GamerProfile>{
 			private int numberOfEasy;
 			private int numberOfHard;
 			
-			
+			//Creating a new profile constructor
 			public GamerProfile(String name, int points, int winsEasy, int losesEasy, int winsHard, int losesHard,
 					int numberOfEasy, int numberOfHard) {
 				this.name = name;
@@ -24,7 +25,7 @@ public class GamerProfile implements Comparable<GamerProfile>{
 				this.numberOfHard = numberOfHard;
 			}
 
-
+			//Setters and getters
 			public String getName() {
 				return name;
 			}
@@ -90,7 +91,7 @@ public class GamerProfile implements Comparable<GamerProfile>{
 			}
 			
 
-			
+			//Compare user's points in order to create the rank
 			public int compareTo(GamerProfile o) {
 				
 				return new Integer(this.points).compareTo(o.getPoints());

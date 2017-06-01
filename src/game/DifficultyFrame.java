@@ -45,6 +45,8 @@ public class DifficultyFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Panel creation
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?");
@@ -54,6 +56,7 @@ public class DifficultyFrame {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		
+		//The button for hard level : declarations, values' assignments depending of the selected level
 		JButton hardLevelButton = new JButton("\u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF");
 		hardLevelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -75,6 +78,7 @@ public class DifficultyFrame {
 		hardLevelButton.setBounds(171, 148, 99, 25);
 		frmGuessWho.getContentPane().add(hardLevelButton);
 		
+		//Same as Hard level button
 		JButton easyLevelButton = new JButton("\u0395\u03CD\u03BA\u03BF\u03BB\u03BF");
 		easyLevelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -97,6 +101,7 @@ public class DifficultyFrame {
 		easyLevelButton.setBounds(171, 85, 99, 25);
 		frmGuessWho.getContentPane().add(easyLevelButton);
 		
+		//Title " Επίλεξε επίπεδο " creation
 		JLabel label = new JLabel("\u0395\u03C0\u03AD\u03BB\u03B5\u03BE\u03B5 \u03B5\u03C0\u03AF\u03C0\u03B5\u03B4\u03BF:");
 		label.setForeground(Color.BLACK);
 		label.setBackground(Color.WHITE);
@@ -104,10 +109,11 @@ public class DifficultyFrame {
 		label.setBounds(140, 36, 172, 27);
 		frmGuessWho.getContentPane().add(label);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		lblNewLabel.setBounds(0, 0, 442, 268);
-		frmGuessWho.getContentPane().add(lblNewLabel);
+		//Background creation
+		JLabel background = new JLabel("New label");
+		background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
+		background.setBounds(0, 0, 442, 268);
+		frmGuessWho.getContentPane().add(background);
 		
 	}
 }

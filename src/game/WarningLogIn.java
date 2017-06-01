@@ -19,22 +19,6 @@ public class WarningLogIn {
 	JFrame frmGuessWho;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					WarningLogIn window = new WarningLogIn();
-					window.frmGuessWho.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public WarningLogIn() {

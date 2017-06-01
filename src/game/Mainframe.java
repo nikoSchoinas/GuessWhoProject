@@ -99,7 +99,7 @@ public class Mainframe {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		lblNewLabel.setBounds(0, 0, 432, 255);
+		lblNewLabel.setBounds(0, 0, 432, 261);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}
 }
