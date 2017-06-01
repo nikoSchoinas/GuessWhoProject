@@ -48,7 +48,7 @@ public final class Initialization {
 		Face fac23 = new Face(false,false,false,true,false,true,false,true,false,true,false,false,23); //Ρεβέκκα - 23
 		Face fac24 = new Face(true,false,false,false,false,true,false,true,false,false,false,false,24); //Τατιανή - 24
 		
-		
+		//Add faces in ArrayList
 		faceslist.add(fac1);
 		faceslist.add(fac2);
 		faceslist.add(fac3);
@@ -75,6 +75,7 @@ public final class Initialization {
 		faceslist.add(fac24);
 	}
 	
+	//Initialize the questions
 	public static void setQuestion(){
 		Question Q1 = new Question(0,"μαύρα μαλλιά");
 		Question Q2 = new Question(1,"ξανθά μαλλιά");
@@ -89,6 +90,7 @@ public final class Initialization {
 		Question Q11 = new Question(10,"γενειάδα/μουστάκι");
 		Question Q12 = new Question(11,"αγόρι");
 		
+		//Add questions in Arraylist
 		questionlist.add(Q1);
 		questionlist.add(Q2);
 		questionlist.add(Q3);
@@ -104,6 +106,7 @@ public final class Initialization {
 		
 	}
 	
+	//Getters
 	public static ArrayList<Face> getFaceslist() {
 		return faceslist;
 	}
