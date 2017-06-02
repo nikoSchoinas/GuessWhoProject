@@ -36,7 +36,6 @@ public class Enemy {
 		}else{
 			for(int i=0;i<questions.size();i++){
 				numOfDeletedFaces = questions.get(i).facesForDelete(faceslist, playerFace);
-				System.out.println(numOfDeletedFaces+"tic");
 				if(numOfDeletedFaces > maxDeletedFaces){
 					maxDeletedFaces = numOfDeletedFaces;
 					selectedQuestionIndex = i;
