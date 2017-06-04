@@ -77,8 +77,8 @@ public class PauseMenu {
 		JButton ExitButton = new JButton("\u0388\u03BE\u03BF\u03B4\u03BF\u03C2");
 		ExitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmGuessWho.dispose();
 				MainGamePanel.dispose();
+				frmGuessWho.dispose();
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
