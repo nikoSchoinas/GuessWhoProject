@@ -32,35 +32,39 @@ public class MainGamePanel {
 	static JFrame frmGuessWho;
 
 
-	private ArrayList<Integer> facesCover = new ArrayList<Integer>();
+	private ArrayList<Integer> facesCover;
 	private int uncoveredFacesCounter;
 
-	private boolean playerTurn = true; /*when this variables are false opponent cannot push buttons*/
-	private boolean enemyTurn = false;
+	private boolean playerTurn; /*when this variables are false opponent cannot push buttons*/
+	private boolean enemyTurn;
+	private boolean wizardTurn;
 
 	private String text;
 
-	private ArrayList<Face> faceslist = new ArrayList<Face>();
-	private ArrayList<Question> questionList = new ArrayList<Question>();
+	private ArrayList<Face> faceslist;
+	private ArrayList<Question> questionList;
+	private DefaultListModel<String> model;
 
-	private ArrayList<Face> enemyFacesList = new ArrayList<Face>();
-	private ArrayList<Question> enemyQuestionList = new ArrayList<Question>();
+	private ArrayList<Face> enemyFacesList;
+	private ArrayList<Question> enemyQuestionList;
 	private boolean playerResponse;
 
-	private Question playerQuestion = null;
+	private Question playerQuestion;
 	private Face selectedFace;
 
 	private int selectedFaceCode;
 	private int difficultyLevel;
-	private int selectedQuestionIndex;
+	private int selectedQuestionIndex;//enemy's
 
 
+	private int playerQuestionIndex;
 	private Enemy enemy;
 	private Face enemyFace;
 	private int lastFaceCode;
 	private static String path = System.getProperty("user.home") + "/Desktop/Game";
 	
 	private Wizard wizard;
+	private JList questionJList;
 
 
 	/**
@@ -84,19 +88,35 @@ public class MainGamePanel {
 	 */
 	public MainGamePanel() {
 		initialize();
+		
 	}
 
 	public MainGamePanel(int levelSelection, int selectedFaceCode) {
 		difficultyLevel = levelSelection;
 		this.selectedFaceCode = selectedFaceCode;
 		initialize();
+		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		faceslist = new ArrayList<Face>();
+		questionList = new ArrayList<Question>();
+		enemyFacesList = new ArrayList<Face>();
+		enemyQuestionList = new ArrayList<Question>();
+		facesCover = new ArrayList<Integer>();
+		model = new DefaultListModel<String>();
+		playerTurn = true;
+		enemyTurn = false;
+		wizardTurn = true;
+		playerQuestion = null;
+		questionJList = new JList();
+		
 
+		
 		facesCover.add(null);
 		for(int i=1;i<25;i++)
 			facesCover.add(i, 1);
@@ -121,9 +141,9 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 
-		Enemy enemy = new Enemy(enemyFacesList);
-		//enemyFace = enemy.selectFace();
-		enemyFace = enemyFacesList.get(0);
+		enemy = new Enemy(enemyFacesList);
+		enemyFace = enemy.selectFace();
+		wizard = new Wizard(faceslist);
 
 		text = "Επιλέξτε Ερώτηση";
 		JTextArea textArea = new JTextArea(text);
@@ -548,49 +568,18 @@ public class MainGamePanel {
 		player24.setBounds(760, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player24);
 
-		DefaultListModel model = new DefaultListModel();
+		
 		for(Question q : questionList){
 			model.addElement(q.getCharacteristic());
 		}
-		JList questionJList = new JList();
+		
 		questionJList.setModel(model);
 		questionJList.setFont(new Font("Tahoma", Font.BOLD, 12));
 		questionJList.setFixedCellHeight(25);
 		questionJList.setBounds(10, 83, 284, 307);
 		frmGuessWho.getContentPane().add(questionJList);
 
-		JButton okButton = new JButton("\u039F\u039A");
-		okButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if(playerTurn && !enemyTurn){
-					if(questionJList.getSelectedValue()!=null){
-						String selectedQuestion = (String)questionJList.getSelectedValue();
-						//Question playerQuestion = null ;
-						for (Question q : questionList){
-							if (q.getCharacteristic().equals(selectedQuestion))
-								playerQuestion = q;
-						}
-						if(playerQuestion.questionResponse(enemyFace)){
-							text = "Ναι!";
-							model.remove(playerQuestion.getCodeQuestion());
-							model.insertElementAt(playerQuestion.getCharacteristic() + ": Ναι", playerQuestion.getCodeQuestion());
-						}
-						else{
-							text = "Όχι!";
-							model.remove(playerQuestion.getCodeQuestion());
-							model.insertElementAt(playerQuestion.getCharacteristic() + ": Όχι", playerQuestion.getCodeQuestion());
-						}
-						textArea.setText(text);
-
-						playerTurn = false;
-					}
-				}
-
-			}
-		});
-		okButton.setBounds(97, 410, 97, 25);
-		frmGuessWho.getContentPane().add(okButton);
+		
 
 		JLabel PlayersLeftForMe = new JLabel();
 		PlayersLeftForMe.setText(String.valueOf(enemyFacesList.size()));
@@ -614,6 +603,168 @@ public class MainGamePanel {
 		BackgroundForPlayer.setBounds(864, 410, 66, 72);
 		frmGuessWho.getContentPane().add(BackgroundForPlayer);
 
+		
+
+		JLabel Options = new JLabel("");
+		Options.addMouseListener(new MouseAdapter() {
+
+			public void mouseClicked(MouseEvent arg0) {
+
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							PauseMenu window = new PauseMenu(frmGuessWho);
+							window.frmGuessWho.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		Options.setIcon(new ImageIcon(path + "\\settingsbutton.png"));
+		Options.setBounds(34, 617, 74, 63);
+		frmGuessWho.getContentPane().add(Options);
+
+		JLabel PlayerTitleForNumberLeft = new JLabel("\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03CC");
+		PlayerTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		PlayerTitleForNumberLeft.setBounds(854, 384, 107, 16);
+		frmGuessWho.getContentPane().add(PlayerTitleForNumberLeft);
+
+		JLabel BckgroundForEnemy = new JLabel("New label");
+		BckgroundForEnemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
+		BckgroundForEnemy.setBounds(961, 410, 66, 72);
+		frmGuessWho.getContentPane().add(BckgroundForEnemy);
+
+		JLabel EnemyTitleForNumberLeft = new JLabel("\u0391\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5");
+		EnemyTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		EnemyTitleForNumberLeft.setBounds(961, 384, 77, 16);
+		frmGuessWho.getContentPane().add(EnemyTitleForNumberLeft);
+
+		JLabel question_title = new JLabel("\u0388\u03BB\u03B5\u03B3\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03B1\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5 \u03B3\u03B9\u03B1:");
+		question_title.setForeground(new Color(255, 255, 255));
+		question_title.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		question_title.setBounds(10, 18, 284, 54);
+		frmGuessWho.getContentPane().add(question_title);
+
+		JLabel enemy_photo = new JLabel("New label");
+		enemy_photo.setIcon(new ImageIcon(path + "\\question_face2.png"));
+		enemy_photo.setBounds(487, 37, 74, 104);
+		frmGuessWho.getContentPane().add(enemy_photo);
+
+		JLabel background_photo_enemy = new JLabel("New label");
+		background_photo_enemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
+		background_photo_enemy.setBounds(475, 18, 101, 143);
+		frmGuessWho.getContentPane().add(background_photo_enemy);
+
+		JLabel playersicon = new JLabel("New label");
+		String photoName = setFace(selectedFaceCode);
+		playersicon.setIcon(new ImageIcon(path + photoName));
+		playersicon.setBounds(906, 553, 74, 104);
+		frmGuessWho.getContentPane().add(playersicon);
+		//setFaceIcon(906,553,74,104,selectedFaceCode);
+
+		JLabel playersbackground = new JLabel("New label");
+		playersbackground.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
+		playersbackground.setBounds(890, 537, 102, 132);
+		frmGuessWho.getContentPane().add(playersbackground);
+
+		JLabel labelplayersicon = new JLabel("\u039F \u03C0\u03B1\u03AF\u03BA\u03C4\u03B7\u03C2 \u03C3\u03BF\u03C5:");
+		labelplayersicon.setFont(new Font("Tahoma", Font.BOLD, 16));
+		labelplayersicon.setBounds(875, 499, 133, 46);
+		frmGuessWho.getContentPane().add(labelplayersicon);
+
+		/*JLabel cloud = new JLabel("");
+		cloud.setIcon(new ImageIcon(path + "\\cloud1.png"));
+		cloud.setBounds(572, 18, 320, 149);
+		frmGuessWho.getContentPane().add(cloud);*/		
+		
+		JLabel lblWizard = new JLabel("Wizard");
+		lblWizard.setBackground(Color.DARK_GRAY);
+		lblWizard.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if(playerTurn && !enemyTurn && wizardTurn){
+				int questionListIndex = wizard.selectQuestionCode(1, enemyFace, faceslist, questionList);
+				text = "Κάντε ερώτηση \nγια το χαρακτηριστικό \n" + questionList.get(questionListIndex).getCharacteristic();
+				textArea.setText(text);
+				wizardTurn=false;
+				}
+			}
+		});
+		lblWizard.setBounds(97, 470, 97, 104);
+		frmGuessWho.getContentPane().add(lblWizard);
+
+		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5");
+		button.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		button.setBounds(848, 169, 108, 23);
+		frmGuessWho.getContentPane().add(button);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(playerTurn==false && enemyTurn==false){
+					uncoveredFacesCounter=0;
+					for(int i=1;i<25;i++){
+						if(facesCover.get(i)==1){
+							uncoveredFacesCounter++;
+							lastFaceCode = i;
+						}
+					}
+					if(uncoveredFacesCounter>1){
+						selectedQuestionIndex =enemy.selectQuestionCode(difficultyLevel, selectedFace, enemyFacesList, enemyQuestionList);
+						if(enemyQuestionList.get(selectedQuestionIndex).getCodeQuestion()!=11)
+							text = "Έχει " + enemyQuestionList.get(selectedQuestionIndex).getCharacteristic()+";";
+						else
+							text = "Είναι " + enemyQuestionList.get(selectedQuestionIndex).getCharacteristic()+";";
+						textArea.setText(text);
+
+						enemyTurn=true;
+						playerTurn=true;
+
+						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
+					}
+					else if(uncoveredFacesCounter==1){//1 card left
+						String photoName;
+						photoName = setFace(enemyFace.getCodeFace());
+						enemy_photo.setIcon(new ImageIcon(path + photoName));
+						//enemy_photo.setVisible(false);
+						//setFaceIcon(487,37,102,132,enemyFace.getCodeFace());
+						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
+						if(lastFaceCode==enemyFace.getCodeFace()){//we win
+							text = "Συγχαρητήρια Κερδίσατε!!! \nΒρήκατε το πρόσωπο \nπου είχα επιλέξει.";
+							if(difficultyLevel==1){
+								text = text + "\n8 πόντοι είναι δικοί σας!";
+							}
+							else{
+								text = text + "\n4 πόντοι είναι δικοί σας!";
+							}
+						}
+						else{
+							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
+							if(difficultyLevel==1){
+								text = text + "\n2 πόντοι θα σας αφαιρεθούν.";
+							}
+							else{
+								text = text + "\n3 πόντοι θα σας αφαιρεθούν.";
+							}
+						}
+						
+						enemyTurn=true;
+						playerTurn=false;
+						textArea.setText(text);
+					}
+					else{
+						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
+						text = "Δεν γίνεται να κερδίσετε αν έχετε \nκλείσει όλες τις κάρτες";
+						textArea.setText(text);
+					}
+
+				}
+				else{
+					if(uncoveredFacesCounter > 1 && enemyFacesList.size()>1)
+						textArea.setText("Πρέπει να επιλέξετε ερώτηση!");
+				}
+			}
+		});
+		
 		JButton yesButton = new JButton("\u039D\u03B1\u03B9");
 		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -625,7 +776,10 @@ public class MainGamePanel {
 						enemyQuestionList.remove(selectedQuestionIndex);
 						PlayersLeftForEnemy.setText(String.valueOf(enemyFacesList.size()));
 						if(enemyFacesList.size()==1){
+							String photoName = setFace(selectedFace.getCodeFace());
+							enemy_photo.setIcon(new ImageIcon(path + photoName));
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
+							
 							if(difficultyLevel==1){
 								text = text + "\n2 πόντοι θα σας αφαιρεθούν";
 							}
@@ -662,6 +816,8 @@ public class MainGamePanel {
 						enemyQuestionList.remove(selectedQuestionIndex);
 						PlayersLeftForEnemy.setText(String.valueOf(enemyFacesList.size()));
 						if(enemyFacesList.size()==1){
+							String photoName = setFace(selectedFace.getCodeFace());
+							enemy_photo.setIcon(new ImageIcon(path + photoName));
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
 							if(difficultyLevel==1){
 								text = text + "\n2 πόντοι θα σας αφαιρεθούν";
@@ -688,273 +844,113 @@ public class MainGamePanel {
 		});
 		noButton.setBounds(741, 168, 97, 25);
 		frmGuessWho.getContentPane().add(noButton);
-
-		JLabel Options = new JLabel("");
-		Options.addMouseListener(new MouseAdapter() {
-
+		
+		JButton okButton = new JButton("\u039F\u039A");
+		okButton.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent arg0) {
-
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							PauseMenu window = new PauseMenu(frmGuessWho);
-							window.frmGuessWho.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
+				if(playerTurn && !enemyTurn){
+					if(questionJList.getSelectedValue()!=null){
+						String selectedQuestion = (String)questionJList.getSelectedValue();
+						//Question playerQuestion = null ;
+						for (Question q : questionList){
+							if (q.getCharacteristic().equals(selectedQuestion))
+								playerQuestion = q;
 						}
+						playerQuestionIndex = -1;
+						for(int i=0;i<questionList.size();i++){
+							if(playerQuestion==questionList.get(i)){
+								playerQuestionIndex=i;
+							}
+						}
+						if(playerQuestionIndex != -1){
+						questionList.get(playerQuestionIndex).facesForDelete(faceslist, enemyFace);
+						questionList.get(playerQuestionIndex).deleteFaces(faceslist);
+						questionList.remove(playerQuestionIndex);
+						}
+						if(playerQuestion.questionResponse(enemyFace)){
+							text = "Ναι!";
+							model.remove(playerQuestion.getCodeQuestion());
+							model.insertElementAt(playerQuestion.getCharacteristic() + ": Ναι", playerQuestion.getCodeQuestion());
+						}
+						else{
+							text = "Όχι!";
+							model.remove(playerQuestion.getCodeQuestion());
+							model.insertElementAt(playerQuestion.getCharacteristic() + ": Όχι", playerQuestion.getCodeQuestion());
+						}
+						textArea.setText(text);
+
+						playerTurn = false;
 					}
-				});
+				}
+
 			}
 		});
-		Options.setIcon(new ImageIcon(path + "\\options1 - \u0391\u03BD\u03C4\u03AF\u03B3\u03C1\u03B1\u03C6\u03BF.png"));
-		Options.setBounds(34, 617, 74, 63);
-		frmGuessWho.getContentPane().add(Options);
+		okButton.setBounds(97, 410, 97, 25);
+		frmGuessWho.getContentPane().add(okButton);
 
-		JLabel PlayerTitleForNumberLeft = new JLabel("\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03CC");
-		PlayerTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		PlayerTitleForNumberLeft.setBounds(854, 384, 107, 16);
-		frmGuessWho.getContentPane().add(PlayerTitleForNumberLeft);
 
-		JLabel BckgroundForEnemy = new JLabel("New label");
-		BckgroundForEnemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
-		BckgroundForEnemy.setBounds(961, 410, 66, 72);
-		frmGuessWho.getContentPane().add(BckgroundForEnemy);
-
-		JLabel EnemyTitleForNumberLeft = new JLabel("\u0391\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5");
-		EnemyTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		EnemyTitleForNumberLeft.setBounds(961, 384, 77, 16);
-		frmGuessWho.getContentPane().add(EnemyTitleForNumberLeft);
-
-		JLabel question_title = new JLabel("\u0388\u03BB\u03B5\u03B3\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03B1\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5 \u03B3\u03B9\u03B1:");
-		question_title.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		question_title.setBounds(10, 18, 284, 54);
-		frmGuessWho.getContentPane().add(question_title);
-
-		JLabel enemy_photo = new JLabel("New label");
-		enemy_photo.setIcon(new ImageIcon(path + "\\question_face1.png"));
-		enemy_photo.setBounds(487, 37, 102, 132);
-		frmGuessWho.getContentPane().add(enemy_photo);
-
-		JLabel background_photo_enemy = new JLabel("New label");
-		background_photo_enemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
-		background_photo_enemy.setBounds(474, 18, 127, 170);
-		frmGuessWho.getContentPane().add(background_photo_enemy);
-
-	/*	JLabel playersicon = new JLabel("New label");
-		switch (selectedFaceCode){
-		case 1: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
-		break;
-		case 2: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
-		break;
-		case 3: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
-		break;
-		case 4: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
-		break;
-		case 5: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
-		break;
-		case 6: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
-		break;
-		case 7: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
-		break;
-		case 8: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg"));
-		break;
-		case 9: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
-		break;
-		case 10: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg"));
-		break;
-		case 11: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg"));
-		break;
-		case 12: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg"));
-		break;
-		case 13: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg"));
-		break;
-		case 14: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg"));
-		break;
-		case 15: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg"));
-		break;
-		case 16: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg"));
-		break;
-		case 17: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg"));
-		break;
-		case 18: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg"));
-		break;
-		case 19: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg"));
-		break;
-		case 20: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg"));
-		break;
-		case 21: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg"));
-		break;
-		case 22: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg"));
-		break;
-		case 23: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg"));
-		break;
-		case 24: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
-		break;
-		}
-
-		playersicon.setBounds(906, 553, 74, 104);
-		frmGuessWho.getContentPane().add(playersicon);*/
-		setFaceIcon(906,553,74,104,selectedFaceCode);
-
-		JLabel playersbackground = new JLabel("New label");
-		playersbackground.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
-		playersbackground.setBounds(890, 537, 102, 132);
-		frmGuessWho.getContentPane().add(playersbackground);
-
-		JLabel labelplayersicon = new JLabel("\u039F \u03C0\u03B1\u03AF\u03BA\u03C4\u03B7\u03C2 \u03C3\u03BF\u03C5:");
-		labelplayersicon.setFont(new Font("Tahoma", Font.BOLD, 16));
-		labelplayersicon.setBounds(875, 499, 133, 46);
-		frmGuessWho.getContentPane().add(labelplayersicon);
-
-		/*JLabel cloud = new JLabel("");
-		cloud.setIcon(new ImageIcon(path + "\\cloud1.png"));
-		cloud.setBounds(572, 18, 320, 149);
-		frmGuessWho.getContentPane().add(cloud);*/		
 
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(path + "\\MainBackround.jpg"));
 		background.setBounds(0, 0, 1050, 693);
 		frmGuessWho.getContentPane().add(background);
-		
-		JLabel lblWizard = new JLabel("Wizard");
-		lblWizard.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				//κωδικας μαγου
-			}
-		});
-		lblWizard.setBounds(97, 470, 97, 104);
-		frmGuessWho.getContentPane().add(lblWizard);
-
-		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5");
-		button.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button.setBounds(848, 169, 108, 23);
-		frmGuessWho.getContentPane().add(button);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(playerTurn==false && enemyTurn==false){
-					uncoveredFacesCounter=0;
-					for(int i=1;i<25;i++){
-						if(facesCover.get(i)==1){
-							uncoveredFacesCounter++;
-							lastFaceCode = i;
-						}
-					}
-					if(uncoveredFacesCounter>1){
-						selectedQuestionIndex =enemy.selectQuestionCode(difficultyLevel, selectedFace, enemyFacesList, enemyQuestionList);
-						text = "Έχει " + enemyQuestionList.get(selectedQuestionIndex).getCharacteristic()+";";
-						textArea.setText(text);
-
-						enemyTurn=true;
-						playerTurn=true;
-
-						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
-					}
-					else if(uncoveredFacesCounter==1){//1 card left
-						//enemy_photo.setVisible(false);
-						//setFaceIcon(487,37,102,132,enemyFace.getCodeFace());
-						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
-						if(lastFaceCode==enemyFace.getCodeFace()){//we win
-							text = "Συγχαρητήρια Κερδίσατε!!! \nΒρήκατε το πρόσωπο \nπου είχα επιλέξει.";
-							if(difficultyLevel==1){
-								text = text + "\n8 πόντοι είναι δικοί σας!";
-							}
-							else{
-								text = text + "\n4 πόντοι είναι δικοί σας!";
-							}
-						}
-						else{
-							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
-							if(difficultyLevel==1){
-								text = text + "\n2 πόντοι θα σας αφαιρεθούν";
-							}
-							else{
-								text = text + "\n3 πόντοι θα σας αφαιρεθούν";
-							}
-						}
-						
-						enemyTurn=true;
-						playerTurn=false;
-						textArea.setText(text);
-					}
-					else{
-						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
-						text = "Δεν γίνεται να κερδίσετε αν έχετε \nκλείσει όλες τις κάρτες";
-						textArea.setText(text);
-					}
-
-				}
-				else{
-					if(uncoveredFacesCounter > 1)
-						textArea.setText("Πρέπει να επιλέξετε ερώτηση!");
-				}
-			}
-		});
-
-
-
-
 
 	}
 	
-	public static void setFaceIcon(int x,int y,int z,int w,int code){//x,y,z,w are coordinates of JLabel in MainGamePanel
+public  String setFace(int code){//x,y,z,w are coordinates of JLabel in MainGamePanel
 		
-		JLabel playersicon = new JLabel("New label");
+		String photoName = null;
 		switch (code){
-		case 1: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		case 1: photoName = "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg";
 		break;
-		case 2: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg"));
+		case 2: photoName = "\\players_icon\\\u0391\u03B3\u03BD\u03B7.jpg";
 		break;
-		case 3: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		case 3: photoName = "\\players_icon\\\u0391\u03B4\u03C1\u03B9\u03B1\u03BD\u03CC\u03C2.jpg";
 		break;
-		case 4: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg"));
+		case 4: photoName = "\\players_icon\\\u0391\u03C5\u03B3\u03BF\u03C5\u03C3\u03C4\u03AF\u03BD\u03BF\u03C2.jpg";
 		break;
-		case 5: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg"));
+		case 5: photoName = "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg";
 		break;
-		case 6: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg"));
+		case 6: photoName = "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg";
 		break;
-		case 7: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg"));
+		case 7: photoName = "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg";
 		break;
-		case 8: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg"));
+		case 8: photoName = "\\players_icon\\\u0393\u03C1\u03B7\u03B3\u03CC\u03C1\u03B9\u03BF\u03C2.jpg";
 		break;
-		case 9: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg"));
+		case 9: photoName = "\\players_icon\\\u0394\u03B1\u03BC\u03B9\u03B1\u03BD\u03CC\u03C2.jpg";
 		break;
-		case 10: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg"));
+		case 10: photoName = "\\players_icon\\\u0394\u03B7\u03BC\u03AE\u03C4\u03C1\u03B9\u03BF\u03C2.jpg";
 		break;
-		case 11: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg"));
+		case 11: photoName = "\\players_icon\\\u0395\u03BB\u03B9\u03C3\u03AC\u03B2\u03B5\u03C4.jpg";
 		break;
-		case 12: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg"));
+		case 12: photoName = "\\players_icon\\\u0395\u03BC\u03BC\u03B1\u03BD\u03BF\u03C5\u03AE\u03BB.jpg";
 		break;
-		case 13: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg"));
+		case 13: photoName = "\\players_icon\\\u0395\u03C5\u03B3\u03AD\u03BD\u03B9\u03BF\u03C2.jpg";
 		break;
-		case 14: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg"));
+		case 14: photoName = "\\players_icon\\\u0397\u03BB\u03AF\u03B1\u03C2.jpg";
 		break;
-		case 15: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg"));
+		case 15: photoName = "\\players_icon\\\u0398\u03C9\u03BC\u03AC\u03C2.jpg";
 		break;
-		case 16: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg"));
+		case 16: photoName = "\\players_icon\\\u0399\u03AC\u03C3\u03C9\u03BD.jpg";
 		break;
-		case 17: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg"));
+		case 17: photoName = "\\players_icon\\\u0399\u03BF\u03C1\u03B4\u03AC\u03BD\u03B7\u03C2.jpg";
 		break;
-		case 18: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg"));
+		case 18: photoName = "\\players_icon\\\u0399\u03C9\u03B1\u03BA\u03B5\u03AF\u03BC.jpg";
 		break;
-		case 19: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg"));
+		case 19: photoName = "\\players_icon\\\u039B\u03C5\u03B4\u03AF\u03B1.jpg";
 		break;
-		case 20: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg"));
+		case 20: photoName = "\\players_icon\\\u039C\u03B1\u03B3\u03B4\u03B1\u03BB\u03B7\u03BD\u03AE.jpg";
 		break;
-		case 21: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg"));
+		case 21: photoName = "\\players_icon\\\u039C\u03AC\u03BE\u03B9\u03BC\u03BF\u03C2.jpg";
 		break;
-		case 22: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg"));
+		case 22: photoName = "\\players_icon\\\u039C\u03B9\u03C7\u03B1\u03AE\u03BB.jpg";
 		break;
-		case 23: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg"));
+		case 23: photoName = "\\players_icon\\\u03A1\u03B5\u03B2\u03AD\u03BA\u03BA\u03B1.jpg";
 		break;
-		case 24: playersicon.setIcon(new ImageIcon(path + "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg"));
+		case 24: photoName = "\\players_icon\\\u03A4\u03B1\u03C4\u03B9\u03B1\u03BD\u03AE.jpg";
 		break;
 		}
-		
-		playersicon.setBounds(x, y, z, w);
-		frmGuessWho.getContentPane().add(playersicon);
-		
-		
-		
-		
+		return photoName;
 	}
 }
