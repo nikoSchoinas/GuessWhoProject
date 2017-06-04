@@ -28,6 +28,7 @@ public class Face {
 			this.brownHair = brownHair;
 			this.blueEyes = blueEyes;
 			this.brownEyes = brownEyes;
+			this.greenEyes = greenEyes;
 			this.blackSkin = blackSkin;
 			this.glasses = glasses;
 			this.hat = hat;
