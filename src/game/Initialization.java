@@ -49,6 +49,7 @@ public final class Initialization {
 		Face fac24 = new Face(true,false,false,false,false,false,true,true,false,false,false,false,24); //Τατιανή - 24
 		
 		//Add faces in ArrayList
+		faceslist.clear();
 		faceslist.add(fac1);
 		faceslist.add(fac2);
 		faceslist.add(fac3);
@@ -91,6 +92,7 @@ public final class Initialization {
 		Question Q12 = new Question(11,"αγόρι");
 		
 		//Add questions in Arraylist
+		questionlist.clear();
 		questionlist.add(Q1);
 		questionlist.add(Q2);
 		questionlist.add(Q3);
