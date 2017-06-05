@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 import com.ibm.icu.impl.duration.TimeUnit;
@@ -26,6 +27,9 @@ import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class MainGamePanel {
 
@@ -64,7 +68,11 @@ public class MainGamePanel {
 	private static String path = System.getProperty("user.home") + "/Desktop/Game";
 	
 	private Wizard wizard;
-	private JList questionJList;
+	boolean win=true;
+	private JList<String> questionJList;
+
+
+	private String playersName;
 
 
 	/**
@@ -91,7 +99,8 @@ public class MainGamePanel {
 		
 	}
 
-	public MainGamePanel(int levelSelection, int selectedFaceCode) {
+	public MainGamePanel(int levelSelection, int selectedFaceCode, String playersName) {
+		this.playersName = playersName;
 		difficultyLevel = levelSelection;
 		this.selectedFaceCode = selectedFaceCode;
 		initialize();
@@ -113,7 +122,7 @@ public class MainGamePanel {
 		enemyTurn = false;
 		wizardTurn = true;
 		playerQuestion = null;
-		questionJList = new JList();
+		questionJList = new JList<String>();
 		
 
 		
@@ -576,7 +585,7 @@ public class MainGamePanel {
 		questionJList.setModel(model);
 		questionJList.setFont(new Font("Tahoma", Font.BOLD, 12));
 		questionJList.setFixedCellHeight(25);
-		questionJList.setBounds(10, 83, 284, 307);
+        questionJList.setBounds(10, 83, 284, 307);
 		frmGuessWho.getContentPane().add(questionJList);
 
 		
@@ -588,6 +597,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(PlayersLeftForMe);
 
 		JLabel NumberOfPlayers = new JLabel("\u0391\u03C1\u03B9\u03B8\u03BC\u03CC\u03C2 \u03C0\u03B1\u03B9\u03BA\u03C4\u03CE\u03BD \u03C3\u03C4\u03BF \u03C4\u03B1\u03BC\u03C0\u03BB\u03CC:\r\n");
+		NumberOfPlayers.setForeground(SystemColor.text);
 		NumberOfPlayers.setFont(new Font("Tahoma", Font.BOLD, 14));
 		NumberOfPlayers.setBounds(844, 348, 206, 25);
 		frmGuessWho.getContentPane().add(NumberOfPlayers);
@@ -598,8 +608,9 @@ public class MainGamePanel {
 		PlayersLeftForEnemy.setBounds(981, 433, 32, 25);
 		frmGuessWho.getContentPane().add(PlayersLeftForEnemy);
 
-		JLabel BackgroundForPlayer = new JLabel("New label");
-		BackgroundForPlayer.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
+		JLabel BackgroundForPlayer = new JLabel("");
+		BackgroundForPlayer.setOpaque(true);
+		BackgroundForPlayer.setBackground(new Color(255, 255, 255, 200));
 		BackgroundForPlayer.setBounds(864, 410, 66, 72);
 		frmGuessWho.getContentPane().add(BackgroundForPlayer);
 
@@ -613,7 +624,7 @@ public class MainGamePanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							PauseMenu window = new PauseMenu(frmGuessWho);
+							PauseMenu window = new PauseMenu(frmGuessWho,playersName);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -622,21 +633,24 @@ public class MainGamePanel {
 				});
 			}
 		});
-		Options.setIcon(new ImageIcon(path + "\\settingsbutton.png"));
+		Options.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\settingsbutton.png"));
 		Options.setBounds(34, 617, 74, 63);
 		frmGuessWho.getContentPane().add(Options);
 
 		JLabel PlayerTitleForNumberLeft = new JLabel("\u03A0\u03C1\u03BF\u03C3\u03C9\u03C0\u03B9\u03BA\u03CC");
+		PlayerTitleForNumberLeft.setForeground(SystemColor.controlLtHighlight);
 		PlayerTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		PlayerTitleForNumberLeft.setBounds(854, 384, 107, 16);
 		frmGuessWho.getContentPane().add(PlayerTitleForNumberLeft);
 
-		JLabel BckgroundForEnemy = new JLabel("New label");
-		BckgroundForEnemy.setIcon(new ImageIcon(path + "\\questionbackground1.png"));
+		JLabel BckgroundForEnemy = new JLabel("");
+		BckgroundForEnemy.setOpaque(true);
+		BckgroundForEnemy.setBackground(new Color(255, 255, 255, 200));
 		BckgroundForEnemy.setBounds(961, 410, 66, 72);
 		frmGuessWho.getContentPane().add(BckgroundForEnemy);
 
 		JLabel EnemyTitleForNumberLeft = new JLabel("\u0391\u03BD\u03C4\u03B9\u03C0\u03AC\u03BB\u03BF\u03C5");
+		EnemyTitleForNumberLeft.setForeground(SystemColor.controlLtHighlight);
 		EnemyTitleForNumberLeft.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		EnemyTitleForNumberLeft.setBounds(961, 384, 77, 16);
 		frmGuessWho.getContentPane().add(EnemyTitleForNumberLeft);
@@ -657,7 +671,7 @@ public class MainGamePanel {
 		background_photo_enemy.setBounds(475, 18, 101, 143);
 		frmGuessWho.getContentPane().add(background_photo_enemy);
 
-		JLabel playersicon = new JLabel("New label");
+		JLabel playersicon = new JLabel("");
 		String photoName = setFace(selectedFaceCode);
 		playersicon.setIcon(new ImageIcon(path + photoName));
 		playersicon.setBounds(906, 553, 74, 104);
@@ -670,6 +684,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(playersbackground);
 
 		JLabel labelplayersicon = new JLabel("\u039F \u03C0\u03B1\u03AF\u03BA\u03C4\u03B7\u03C2 \u03C3\u03BF\u03C5:");
+		labelplayersicon.setForeground(SystemColor.controlLtHighlight);
 		labelplayersicon.setFont(new Font("Tahoma", Font.BOLD, 16));
 		labelplayersicon.setBounds(875, 499, 133, 46);
 		frmGuessWho.getContentPane().add(labelplayersicon);
@@ -680,6 +695,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(cloud);*/		
 		
 		JLabel lblWizard = new JLabel("Wizard");
+		lblWizard.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\WizardCorrectSize.png"));
 		lblWizard.setBackground(Color.DARK_GRAY);
 		lblWizard.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -691,7 +707,7 @@ public class MainGamePanel {
 				}
 			}
 		});
-		lblWizard.setBounds(97, 470, 97, 104);
+		lblWizard.setBounds(97, 472, 107, 134);
 		frmGuessWho.getContentPane().add(lblWizard);
 
 		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5");
@@ -738,6 +754,7 @@ public class MainGamePanel {
 							}
 						}
 						else{
+							win=false;
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
 							if(difficultyLevel==1){
 								text = text + "\n2 πόντοι θα σας αφαιρεθούν.";
@@ -746,7 +763,27 @@ public class MainGamePanel {
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν.";
 							}
 						}
-						
+						FileEditor FE = new FileEditor();
+						if(win){//we won
+							if(difficultyLevel==1){
+								FE.calculatePoints(playersName, true, win);//true==hard level
+								FE.writeFile("statistics.txt");
+							}
+							else{
+								FE.calculatePoints(playersName, false, win);
+								FE.writeFile("statistics.txt");
+							}
+						}
+						else{//we lost
+							if(difficultyLevel==1){
+								FE.calculatePoints(playersName, true, win);//false==hard level
+								FE.writeFile("statistics.txt");
+							}
+							else{
+								FE.calculatePoints(playersName, false, win);
+								FE.writeFile("statistics.txt");
+							}
+						}
 						enemyTurn=true;
 						playerTurn=false;
 						textArea.setText(text);
@@ -779,12 +816,24 @@ public class MainGamePanel {
 							String photoName = setFace(selectedFace.getCodeFace());
 							enemy_photo.setIcon(new ImageIcon(path + photoName));
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
-							
+							win = false;
 							if(difficultyLevel==1){
 								text = text + "\n2 πόντοι θα σας αφαιρεθούν";
 							}
 							else{
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν";
+							}
+							//commands for losing points
+							if(!win){
+								FileEditor FE = new FileEditor();
+								if(difficultyLevel==1){
+									FE.calculatePoints(playersName, true, win);//false==hard level
+									FE.writeFile("statistics.txt");
+								}
+								else{
+									FE.calculatePoints(playersName, false, win);
+									FE.writeFile("statistics.txt");
+								}
 							}
 							playerTurn=false;
 							textArea.setText(text);
@@ -819,11 +868,23 @@ public class MainGamePanel {
 							String photoName = setFace(selectedFace.getCodeFace());
 							enemy_photo.setIcon(new ImageIcon(path + photoName));
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
+							win=false;
 							if(difficultyLevel==1){
 								text = text + "\n2 πόντοι θα σας αφαιρεθούν";
 							}
 							else{
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν";
+							}
+							if(!win){//commands for losing points
+								FileEditor FE = new FileEditor();
+								if(difficultyLevel==1){
+									FE.calculatePoints(playersName, true, win);//false==hard level
+									FE.writeFile("statistics.txt");
+								}
+								else{
+									FE.calculatePoints(playersName, false, win);
+									FE.writeFile("statistics.txt");
+								}
 							}
 							playerTurn=false;
 							textArea.setText(text);
@@ -892,7 +953,7 @@ public class MainGamePanel {
 
 
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon(path + "\\MainBackround.jpg"));
+		background.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\MainBackround5.png"));
 		background.setBounds(0, 0, 1050, 693);
 		frmGuessWho.getContentPane().add(background);
 
