@@ -20,6 +20,7 @@ public class LogIn {
 	public JFrame frmGuessWho;
 	private JTextField AccountName;
 	private int find=0;
+	private String playersName;
 
 	/**
 	 * Launch the application.
@@ -92,7 +93,7 @@ public class LogIn {
 		JButton LogInButton = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2\r\n");
 		LogInButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String playersName = AccountName.getText();	
+				playersName = AccountName.getText();	
 				FileEditor rankFile = new FileEditor();
 				find = rankFile.searchEditor(playersName);//checking file for the given user name
 				if(find==-1){							 //if the file doesn't contain this name
@@ -116,6 +117,12 @@ public class LogIn {
 		Background.setBounds(0, 0, 432, 261);
 		frmGuessWho.getContentPane().add(Background);
 		frmGuessWho.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{frmGuessWho.getContentPane(), Background}));
+		
 	}
+
+
+	
+	
+	
 
 }
