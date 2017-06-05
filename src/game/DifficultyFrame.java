@@ -16,28 +16,30 @@ import javax.swing.JButton;
 public class DifficultyFrame {
 
 	private int difficultyLevel; //0: easy level , 1: hard level
+	private String playersName;
 	JFrame frmGuessWho;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DifficultyFrame window = new DifficultyFrame();
+					DifficultyFrame window = new DifficultyFrame(playersName);
 					window.frmGuessWho.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
-	public DifficultyFrame() {
+	public DifficultyFrame(String playersName) {
+		this.playersName = playersName;
 		initialize();
 	}
 
@@ -65,7 +67,7 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel);
+							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel,playersName);
 							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
@@ -87,7 +89,7 @@ public class DifficultyFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel);
+							ChoosePlayerFrame window = new ChoosePlayerFrame(difficultyLevel,playersName);
 							window.choiceFrame.setVisible(true);
 						}
 						catch (Exception e) {
