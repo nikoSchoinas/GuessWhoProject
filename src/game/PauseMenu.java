@@ -17,27 +17,32 @@ public class PauseMenu {
 	//Declaratons
 	static JFrame frmGuessWho;
 	static JFrame MainGamePanel;
+	
+	private String playersName;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PauseMenu window = new PauseMenu(frmGuessWho);
+					PauseMenu window = new PauseMenu(frmGuessWho,playersName);
 					window.frmGuessWho.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
+
+	
 
 	/**
 	 * Create the application.
 	 */
-	public PauseMenu(JFrame MainGamePanel) {
+	public PauseMenu(JFrame MainGamePanel,String playersName) {
+		this.playersName = playersName;
 		PauseMenu.MainGamePanel = MainGamePanel;
 		initialize();
 	}
@@ -82,7 +87,7 @@ public class PauseMenu {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							Mainframe window = new Mainframe();
+							Mainframe window = new Mainframe(playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
