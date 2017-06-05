@@ -120,8 +120,8 @@ public class FileEditor {
 		 * level : false for easy; true for hard result : false for lose; true
 		 * for win
 		 */
-		int i;
-		if ((i = this.searchEditor(username)) != -1) {
+		int i = this.searchEditor(username);
+		if (i != -1) {//ποια περιπτωση βγαζει -1??????????
 			if (level) {
 				if (result) {
 					int sumPoints = rankFile.get(i).getPoints() + 8;
