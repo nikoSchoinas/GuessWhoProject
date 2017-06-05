@@ -27,6 +27,7 @@ public class Mainframe {
 		
 	}
 
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -47,7 +48,7 @@ public class Mainframe {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							DifficultyFrame window = new DifficultyFrame();
+							DifficultyFrame window = new DifficultyFrame(playersName);
 							window.frmGuessWho.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -112,5 +113,9 @@ public class Mainframe {
 		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
 		lblNewLabel.setBounds(0, 0, 432, 261);
 		frmGuessWho.getContentPane().add(lblNewLabel);
+	}
+	
+	public String getPlayersName() {
+		return playersName;
 	}
 }
