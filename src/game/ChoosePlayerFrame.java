@@ -19,10 +19,11 @@ public class ChoosePlayerFrame {
 	JFrame choiceFrame;
 	private int selectedFaceCode; //When you select a face, its code is saved at selectedFaceCode
 	private static int levelSelection; //The difficulty level is saved at levelSelection
+	private String playersName;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -33,13 +34,14 @@ public class ChoosePlayerFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
-	public ChoosePlayerFrame(int levelSelection) {
+	public ChoosePlayerFrame(int levelSelection,String playersName) {
 		this.levelSelection = levelSelection;
+		this.playersName = playersName;
 		initialize();
 	}
 
@@ -77,7 +79,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -100,7 +102,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -123,7 +125,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -146,7 +148,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -169,7 +171,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -192,7 +194,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -215,7 +217,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -238,7 +240,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -261,7 +263,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -286,7 +288,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -311,7 +313,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -336,7 +338,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -361,7 +363,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -386,7 +388,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -411,7 +413,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -436,7 +438,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -461,7 +463,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -486,7 +488,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -512,7 +514,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -537,7 +539,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -561,7 +563,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -586,7 +588,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -611,7 +613,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
@@ -636,7 +638,7 @@ public class ChoosePlayerFrame {
 				EventQueue.invokeLater(new Runnable(){
 					public void run(){
 						try{
-							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode);
+							MainGamePanel window = new MainGamePanel(levelSelection,selectedFaceCode,playersName);
 							window.frmGuessWho.setVisible(true);
 						}
 						catch (Exception e) {
