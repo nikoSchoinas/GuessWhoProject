@@ -57,6 +57,7 @@ public class DifficultyFrame {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		//The button for hard level : declarations, values' assignments depending of the selected level
 		JButton hardLevelButton = new JButton("\u0394\u03CD\u03C3\u03BA\u03BF\u03BB\u03BF");

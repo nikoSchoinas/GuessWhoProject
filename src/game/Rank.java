@@ -41,6 +41,8 @@ public class Rank {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
+		
 		FileEditor rankFile = new FileEditor();
 		rankFile.sortList();
 		ArrayList<GamerProfile> playersArray = rankFile.getRankFile();

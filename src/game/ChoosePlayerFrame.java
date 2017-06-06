@@ -59,6 +59,7 @@ public class ChoosePlayerFrame {
 		choiceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		choiceFrame.getContentPane().setLayout(null);
 		choiceFrame.setLocationRelativeTo(null);
+		choiceFrame.setResizable(false);
 		
 		//Pad creation	
 		JLabel label = new JLabel("\u0395\u03C0\u03AF\u03BB\u03B5\u03BE\u03B5 \u03C4\u03BF \u03C0\u03C1\u03CC\u03C3\u03C9\u03C0\u03BF \u03C4\u03BF\u03C5 \u03C0\u03B1\u03AF\u03BA\u03C4\u03B7 \u03C3\u03BF\u03C5!");

@@ -149,6 +149,7 @@ public class MainGamePanel {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 
 		enemy = new Enemy(enemyFacesList);
 		enemyFace = enemy.selectFace();

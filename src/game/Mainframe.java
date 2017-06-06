@@ -40,6 +40,7 @@ public class Mainframe {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		JButton NewGameButton = new JButton("\u039D\u03AD\u03BF \u03A0\u03B1\u03B9\u03C7\u03BD\u03AF\u03B4\u03B9");
 		NewGameButton.addActionListener(new ActionListener() {

@@ -37,6 +37,7 @@ public class WarningLogIn {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		JLabel lblNewLabel = new JLabel("\u03A4\u03BF \u03CC\u03BD\u03BF\u03BC\u03B1 \u03C7\u03C1\u03AE\u03C3\u03C4\u03B7 \u03B4\u03B5\u03BD \u03C5\u03C0\u03AC\u03C1\u03C7\u03B5\u03B9 !");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));

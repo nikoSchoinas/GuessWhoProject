@@ -61,6 +61,7 @@ public class PauseMenu {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		//Labels shows tha the game is paused
 		JLabel lblGamePaused = new JLabel("GAME PAUSED");

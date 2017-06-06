@@ -35,6 +35,7 @@ public class WarningCreateAccount {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		JButton OkButton = new JButton("OK");
 		OkButton.addActionListener(new ActionListener() {

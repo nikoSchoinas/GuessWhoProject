@@ -57,6 +57,7 @@ public class StartMenu {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		//Login Button
 		JButton login_button = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2");
