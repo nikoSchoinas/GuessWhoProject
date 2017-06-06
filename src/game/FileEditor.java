@@ -121,22 +121,28 @@ public class FileEditor {
 		 * for win
 		 */
 		int i = this.searchEditor(username);
-		if (i != -1) {//ποια περιπτωση βγαζει -1??????????
+		if (i != -1) {
 			if (level) {
+				rankFile.get(i).setNumberOfHard(rankFile.get(i).getNumberOfHard() +1);
 				if (result) {
 					int sumPoints = rankFile.get(i).getPoints() + 8;
 					rankFile.get(i).setPoints(sumPoints);
+					rankFile.get(i).setWinsHard(rankFile.get(i).getWinsHard()+1);
 				} else {
 					int sumPoints = rankFile.get(i).getPoints() - 2;
 					rankFile.get(i).setPoints(sumPoints);
+					rankFile.get(i).setLosesHard(rankFile.get(i).getLosesHard()+1);
 				}
 			} else {
+				rankFile.get(i).setNumberOfEasy(rankFile.get(i).getNumberOfEasy() +1 );
 				if (result) {
 					int sumPoints = rankFile.get(i).getPoints() + 4;
 					rankFile.get(i).setPoints(sumPoints);
+					rankFile.get(i).setWinsEasy(rankFile.get(i).getWinsEasy() +1 );
 				} else {
 					int sumPoints = rankFile.get(i).getPoints() - 3;
 					rankFile.get(i).setPoints(sumPoints);
+					rankFile.get(i).setLosesEasy(rankFile.get(i).getLosesEasy() +1);
 				}
 			}
 		}
