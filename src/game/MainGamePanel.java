@@ -157,7 +157,7 @@ public class MainGamePanel {
 		text = "Επιλέξτε Ερώτηση";
 		JTextArea textArea = new JTextArea(text);
 		textArea.setEditable(false);
-		textArea.setBounds(658, 40, 191, 72);
+        textArea.setBounds(658, 40, 191, 72);
 		frmGuessWho.getContentPane().add(textArea);
 
 		JLabel player1 = new JLabel("New label");
@@ -633,7 +633,7 @@ public class MainGamePanel {
 				});
 			}
 		});
-		Options.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\settingsbutton.png"));
+		Options.setIcon(new ImageIcon(path + "\\settingsbutton.png"));
 		Options.setBounds(34, 617, 74, 63);
 		frmGuessWho.getContentPane().add(Options);
 
@@ -695,7 +695,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(cloud);*/		
 		
 		JLabel lblWizard = new JLabel("Wizard");
-		lblWizard.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\WizardCorrectSize.png"));
+		lblWizard.setIcon(new ImageIcon(path + "\\WizardCorrectSize.png"));
 		lblWizard.setBackground(Color.DARK_GRAY);
 		lblWizard.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -953,8 +953,8 @@ public class MainGamePanel {
 
 
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\Anastasis\\Desktop\\Game\\MainBackround5.png"));
-		background.setBounds(0, 0, 1050, 693);
+		background.setIcon(new ImageIcon(path + "\\MainBackround5.png"));
+        background.setBounds(0, 0, 1050, 693);
 		frmGuessWho.getContentPane().add(background);
 
 	}
