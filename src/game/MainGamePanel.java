@@ -662,7 +662,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(question_title);
 
 		JLabel enemy_photo = new JLabel("New label");
-		enemy_photo.setIcon(new ImageIcon(path + "\\question_face2.png"));
+		enemy_photo.setIcon(new ImageIcon(path + "\\backofcards.png"));
 		enemy_photo.setBounds(487, 37, 74, 104);
 		frmGuessWho.getContentPane().add(enemy_photo);
 
