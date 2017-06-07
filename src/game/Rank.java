@@ -100,8 +100,8 @@ public class Rank {
 		frmGuessWho.getContentPane().add(list_Points);
 		
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(path + "\\Game\\18789887_10203173268287916_772035473_o.jpg"));
-		Background.setBounds(0, -5, 442, 268);
+		Background.setIcon(new ImageIcon(path + "\\general_background1.png"));
+		Background.setBounds(0, 3, 442, 268);
 		frmGuessWho.getContentPane().add(Background);
 	}
 }

@@ -114,8 +114,8 @@ public class LogIn {
 		frmGuessWho.getRootPane().setDefaultButton(LogInButton);//set enter default button so it can be use by pressing enter
 		
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		Background.setBounds(0, 0, 432, 261);
+		Background.setIcon(new ImageIcon(""));
+		Background.setBounds(0, 0, 444, 272);
 		frmGuessWho.getContentPane().add(Background);
 		frmGuessWho.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{frmGuessWho.getContentPane(), Background}));
 		

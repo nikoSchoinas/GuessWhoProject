@@ -85,6 +85,7 @@ public class Statistics {
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
+		frmGuessWho.setResizable(false);
 		
 		//Button which goes back in the previous window or action
 		JButton btnBack = new JButton("Back");
@@ -245,8 +246,8 @@ public class Statistics {
 		
 		//Background's Creation
 		background = new JLabel("");
-		background.setIcon(new ImageIcon(path + "\\Game\\18789887_10203173268287916_772035473_o.jpg"));
-		background.setBounds(0, 0, 496, 316);
+		background.setIcon(new ImageIcon(path + ""));
+		background.setBounds(0, 0, 506, 327);
 		frmGuessWho.getContentPane().add(background);
 	}
 }

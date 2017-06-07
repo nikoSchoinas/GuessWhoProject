@@ -103,8 +103,8 @@ public class StartMenu {
 		
 		//Background's Creation
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		Background.setBounds(0, 0, 442, 268);
+		Background.setIcon(new ImageIcon(""));
+		Background.setBounds(0, 0, 442, 272);
 		frmGuessWho.getContentPane().add(Background);
 		
 		
