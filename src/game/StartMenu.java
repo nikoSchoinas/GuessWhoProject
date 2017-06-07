@@ -103,7 +103,7 @@ public class StartMenu {
 		
 		//Background's Creation
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(""));
+		Background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
 		Background.setBounds(0, 0, 442, 272);
 		frmGuessWho.getContentPane().add(Background);
 		

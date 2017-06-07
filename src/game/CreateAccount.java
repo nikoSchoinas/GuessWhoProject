@@ -143,7 +143,7 @@ public class CreateAccount {
 		
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
 		lblNewLabel.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}

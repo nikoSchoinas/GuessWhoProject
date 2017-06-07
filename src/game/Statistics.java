@@ -246,7 +246,7 @@ public class Statistics {
 		
 		//Background's Creation
 		background = new JLabel("");
-		background.setIcon(new ImageIcon(path + ""));
+		background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
 		background.setBounds(0, 0, 506, 327);
 		frmGuessWho.getContentPane().add(background);
 	}

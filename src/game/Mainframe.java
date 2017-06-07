@@ -111,8 +111,8 @@ public class Mainframe {
 		frmGuessWho.getContentPane().add(LogOutButton);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(path+"\\question-mark-background-vector.jpg"));
-		lblNewLabel.setBounds(0, 0, 432, 261);
+		lblNewLabel.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
+		lblNewLabel.setBounds(0, 0, 452, 271);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}
 	

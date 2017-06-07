@@ -657,9 +657,9 @@ public class ChoosePlayerFrame {
 		
 		//Block of commands that creates the background
 		JLabel background = new JLabel(""); 
-		background.setIcon(new ImageIcon("C:\\Users\\user\\Desktop\\Game\\backgroundpavlidis.jpg"));
+		background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
 		background.setHorizontalAlignment(SwingConstants.CENTER);
-		background.setBounds(0, -39, 626, 684);
+		background.setBounds(0, -39, 636, 592);
 		choiceFrame.getContentPane().add(background);
 		
 		
