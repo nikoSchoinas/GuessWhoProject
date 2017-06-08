@@ -52,7 +52,7 @@ public class DifficultyFrame {
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -114,7 +114,7 @@ public class DifficultyFrame {
 		
 		//Background creation
 		JLabel background = new JLabel("New label");
-		background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
+		background.setIcon(new ImageIcon(path + "//background4.jpg"));
 		background.setBounds(0, 0, 442, 268);
 		frmGuessWho.getContentPane().add(background);
 		

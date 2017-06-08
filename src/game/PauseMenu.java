@@ -56,7 +56,7 @@ public class PauseMenu {
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?\r\n");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -104,7 +104,7 @@ public class PauseMenu {
 		
 		//Background's Creation
 		JLabel Background = new JLabel("\r\n");
-		Background.setIcon(new ImageIcon(path+"\\background_main.jpg"));
+		Background.setIcon(new ImageIcon(path+"\\background4.jpg"));
 		Background.setBounds(0, 0, 444, 267);
 		frmGuessWho.getContentPane().add(Background);
 	}

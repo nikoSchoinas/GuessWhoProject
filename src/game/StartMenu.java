@@ -52,7 +52,7 @@ public class StartMenu {
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -76,7 +76,7 @@ public class StartMenu {
 				});
 			}
 		});	
-		login_button.setBounds(170, 73, 110, 31);
+		login_button.setBounds(170, 185, 110, 25);
 		frmGuessWho.getContentPane().add(login_button);
 	
 		//Create account button
@@ -98,12 +98,12 @@ public class StartMenu {
 				
 			
 		});
-		Create_account_button.setBounds(170, 139, 110, 31);
+		Create_account_button.setBounds(170, 223, 110, 25);
 		frmGuessWho.getContentPane().add(Create_account_button);
 		
 		//Background's Creation
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
+		Background.setIcon(new ImageIcon(path + "//gwbackground.jpg"));
 		Background.setBounds(0, 0, 442, 272);
 		frmGuessWho.getContentPane().add(Background);
 		

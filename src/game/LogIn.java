@@ -52,7 +52,7 @@ public class LogIn {
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?\r\n");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -114,7 +114,7 @@ public class LogIn {
 		frmGuessWho.getRootPane().setDefaultButton(LogInButton);//set enter default button so it can be use by pressing enter
 		
 		JLabel Background = new JLabel("New label");
-		Background.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
+		Background.setIcon(new ImageIcon(path + "//background4.jpg"));
 		Background.setBounds(0, 0, 444, 272);
 		frmGuessWho.getContentPane().add(Background);
 		frmGuessWho.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{frmGuessWho.getContentPane(), Background}));

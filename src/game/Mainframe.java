@@ -35,7 +35,7 @@ public class Mainframe {
 		String path = System.getProperty("user.home") + "/Desktop/Game";
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who?\r\n");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
 		frmGuessWho.setBounds(100, 100, 450, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
@@ -111,7 +111,7 @@ public class Mainframe {
 		frmGuessWho.getContentPane().add(LogOutButton);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(path + "//18789887_10203173268287916_772035473_o.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(path + "//background4.jpg"));
 		lblNewLabel.setBounds(0, 0, 452, 271);
 		frmGuessWho.getContentPane().add(lblNewLabel);
 	}
