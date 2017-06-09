@@ -1,3 +1,5 @@
+/*Class Question. Every question is an object of this class. There are 12 questions in the game. See Initialization class
+Question objects are been added to ArrayLists.*/
 package game;
 
 import java.util.ArrayList;
@@ -17,7 +19,8 @@ public class Question {
 	}
 
 	/*This method takes two parameters. The ArrayList of faces and player's selected face.
-	   Sets codeFace = -1 at faces that need to be excluded.*/
+	   According to the selected face, fills the ArrayList faces with the faces that need to be deleted.
+	This method returns the size of ArrayList deletedFaces that creates. Enemy uses that method.*/
 	public int facesForDelete(ArrayList<Face> faces,Face selectedFace){
 
 		deletedFaces = new ArrayList<Face>();
@@ -112,7 +115,7 @@ public class Question {
 		return codeQuestion;
 	}
 
-	//Delete the faces from the arraylist depending the answer of the computer's question 
+	//Delete faces from Arraylist depending the answer of the opponent. Enemy, so Wizard, use this method. 
 	public void deleteFaces(ArrayList<Face> faces){
 		for(Face deletedFace : deletedFaces){
 			for(Face face : faces){
@@ -125,7 +128,8 @@ public class Question {
 		}
 	}
 	
-	//Choosing the answers at computer's question
+	/*Every time gamer sets a question to Enemy, the last one calls that method.
+	Method returns true or false if enemyFace has or not the characteristic.  */ 
 	public boolean questionResponse(Face enemyFace){
 
 		switch (codeQuestion) {

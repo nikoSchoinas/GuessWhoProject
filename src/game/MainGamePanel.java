@@ -1,3 +1,4 @@
+/*Class MainGamePanel. It's the Main Frame that gamer interacts with the computer.*/
 package game;
 
 import java.awt.EventQueue;
@@ -39,17 +40,18 @@ public class MainGamePanel {
 	private ArrayList<Integer> facesCover;
 	private int uncoveredFacesCounter;
 
-	private boolean playerTurn; /*when this variables are false opponent cannot push buttons*/
+	private boolean playerTurn; /*the combination of those boolean variable let gamer push a specific button*/
 	private boolean enemyTurn;
 	private boolean wizardTurn;
 
 	private String text;
 
-	private ArrayList<Face> faceslist;
+	private ArrayList<Face> faceslist; /*ArrayLists with faces and questions that wizard uses.*/
 	private ArrayList<Question> questionList;
+	
 	private DefaultListModel<String> model;
 
-	private ArrayList<Face> enemyFacesList;
+	private ArrayList<Face> enemyFacesList; /*ArrayLists with faces and questions that Enemy uses.*/
 	private ArrayList<Question> enemyQuestionList;
 	private boolean playerResponse;
 
@@ -58,13 +60,13 @@ public class MainGamePanel {
 
 	private int selectedFaceCode;
 	private int difficultyLevel;
-	private int selectedQuestionIndex;//enemy's
+	private int selectedQuestionIndex;/*reffered to Enemy*/
 
 
 	private int playerQuestionIndex;
 	private Enemy enemy;
 	private Face enemyFace;
-	private int lastFaceCode;
+	private int lastFaceCode; /*The code of  the last one uncovered face. It's been to check if gamer/player won or lost. */
 	private static String path = System.getProperty("user.home") + "/Desktop/Game";
 	
 	private Wizard wizard;
@@ -125,7 +127,7 @@ public class MainGamePanel {
 		questionJList = new JList<String>();
 		
 
-		
+		/*This block call Initialization static method to fill facesList and questionList.*/
 		facesCover.add(null);
 		for(int i=1;i<25;i++)
 			facesCover.add(i, 1);
@@ -151,7 +153,7 @@ public class MainGamePanel {
 		frmGuessWho.setLocationRelativeTo(null);
 		frmGuessWho.setResizable(false);
 
-		enemy = new Enemy(enemyFacesList);
+		enemy = new Enemy(enemyFacesList); /*Create Enemy and Wizard. Enemy picks a face.*/
 		enemyFace = enemy.selectFace();
 		wizard = new Wizard(faceslist);
 
@@ -161,6 +163,7 @@ public class MainGamePanel {
         textArea.setBounds(658, 40, 191, 72);
 		frmGuessWho.getContentPane().add(textArea);
 
+		/*JLabels from 1 to 24 are use for 24 faces. This block ends at line 582*/
 		JLabel player1 = new JLabel("New label");
 		player1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -578,7 +581,7 @@ public class MainGamePanel {
 		player24.setBounds(760, 568, 74, 104);
 		frmGuessWho.getContentPane().add(player24);
 
-		
+		/*Add questions to model*/
 		for(Question q : questionList){
 			model.addElement(q.getCharacteristic());
 		}
@@ -590,7 +593,7 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(questionJList);
 
 		
-
+		/*JLabels for images on the MainGamePanel. This block ends at line 717*/
 		JLabel PlayersLeftForMe = new JLabel();
 		PlayersLeftForMe.setText(String.valueOf(enemyFacesList.size()));
 		PlayersLeftForMe.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -699,7 +702,7 @@ public class MainGamePanel {
 		lblWizard.setIcon(new ImageIcon(path + "\\WizardCorrectSize.png"));
 		lblWizard.setBackground(Color.DARK_GRAY);
 		lblWizard.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) {/*wizard calls selectQuestionCode to pick best question*/
 				if(playerTurn && !enemyTurn && wizardTurn){
 				int questionListIndex = wizard.selectQuestionCode(1, enemyFace, faceslist, questionList);
 				text = "Κάντε ερώτηση \nγια το χαρακτηριστικό \n" + questionList.get(questionListIndex).getCharacteristic();
@@ -711,7 +714,7 @@ public class MainGamePanel {
 		lblWizard.setBounds(97, 472, 107, 134);
 		frmGuessWho.getContentPane().add(lblWizard);
 
-		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5");
+		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5"); /*Τέλος γύρου button*/
 		button.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		button.setBounds(848, 169, 108, 23);
 		frmGuessWho.getContentPane().add(button);
@@ -719,13 +722,13 @@ public class MainGamePanel {
 			public void actionPerformed(ActionEvent arg0) {
 				if(playerTurn==false && enemyTurn==false){
 					uncoveredFacesCounter=0;
-					for(int i=1;i<25;i++){
+					for(int i=1;i<25;i++){/*Counts how many uncovered faces, gamer left.*/
 						if(facesCover.get(i)==1){
 							uncoveredFacesCounter++;
 							lastFaceCode = i;
 						}
 					}
-					if(uncoveredFacesCounter>1){
+					if(uncoveredFacesCounter>1){ /*If there are more than 1 uncovered faces, Enemy sets a question*/
 						selectedQuestionIndex =enemy.selectQuestionCode(difficultyLevel, selectedFace, enemyFacesList, enemyQuestionList);
 						if(enemyQuestionList.get(selectedQuestionIndex).getCodeQuestion()!=11)
 							text = "Έχει " + enemyQuestionList.get(selectedQuestionIndex).getCharacteristic()+";";
@@ -738,7 +741,7 @@ public class MainGamePanel {
 
 						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
 					}
-					else if(uncoveredFacesCounter==1){//1 card left
+					else if(uncoveredFacesCounter==1){/*if 1 card left, check if gamer won or lost.*/
 						String photoName;
 						photoName = setFace(enemyFace.getCodeFace());
 						enemy_photo.setIcon(new ImageIcon(path + photoName));
@@ -764,7 +767,7 @@ public class MainGamePanel {
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν.";
 							}
 						}
-						FileEditor FE = new FileEditor();
+						FileEditor FE = new FileEditor(); /*write results to file */
 						if(win){//we won
 							if(difficultyLevel==1){
 								FE.calculatePoints(playersName, true, win);//true==hard level
@@ -789,7 +792,7 @@ public class MainGamePanel {
 						playerTurn=false;
 						textArea.setText(text);
 					}
-					else{
+					else{ /*if all faces are covered*/
 						PlayersLeftForMe.setText(String.valueOf(uncoveredFacesCounter));
 						text = "Δεν γίνεται να κερδίσετε αν έχετε \nκλείσει όλες τις κάρτες";
 						textArea.setText(text);
@@ -806,14 +809,14 @@ public class MainGamePanel {
 		JButton yesButton = new JButton("\u039D\u03B1\u03B9");
 		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(playerTurn && enemyTurn){
+				if(playerTurn && enemyTurn){/*after player respone yes to a question, enemy checks for cheating and then deletes the correct faces.*/
 					playerResponse=true;
 					if(enemyQuestionList.get(selectedQuestionIndex).checkQuestion(selectedFace, playerResponse)){
 						enemyQuestionList.get(selectedQuestionIndex).facesForDelete(enemyFacesList, selectedFace);
 						enemyQuestionList.get(selectedQuestionIndex).deleteFaces(enemyFacesList);
 						enemyQuestionList.remove(selectedQuestionIndex);
 						PlayersLeftForEnemy.setText(String.valueOf(enemyFacesList.size()));
-						if(enemyFacesList.size()==1){
+						if(enemyFacesList.size()==1){ /*If one face is left in Enemy's ArrayList of faces,Enemy won.*/
 							String photoName = setFace(selectedFace.getCodeFace());
 							enemy_photo.setIcon(new ImageIcon(path + photoName));
 							text = "Δυστυχώς χάσατε! \nΔε βρήκατε τη σωστή κάρτα.";
@@ -824,7 +827,7 @@ public class MainGamePanel {
 							else{
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν";
 							}
-							//commands for losing points
+							//commands for losing points. Write result to file statistics. 
 							if(!win){
 								FileEditor FE = new FileEditor();
 								if(difficultyLevel==1){
@@ -855,10 +858,10 @@ public class MainGamePanel {
 		yesButton.setBounds(632, 168, 97, 25);
 		frmGuessWho.getContentPane().add(yesButton);
 
-		JButton noButton = new JButton("\u039F\u03C7\u03B9");
+		JButton noButton = new JButton("\u039F\u03C7\u03B9"); /*Same commands as above. This is block runs when player responds "Όχι" to a question*/
 		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(playerTurn && enemyTurn){
+				if(playerTurn && enemyTurn){ 
 					playerResponse=false;
 					if(enemyQuestionList.get(selectedQuestionIndex).checkQuestion(selectedFace, playerResponse)){
 						enemyQuestionList.get(selectedQuestionIndex).facesForDelete(enemyFacesList, selectedFace);
@@ -876,7 +879,7 @@ public class MainGamePanel {
 							else{
 								text = text + "\n3 πόντοι θα σας αφαιρεθούν";
 							}
-							if(!win){//commands for losing points
+							if(!win){//commands for losing points. Write results to file.
 								FileEditor FE = new FileEditor();
 								if(difficultyLevel==1){
 									FE.calculatePoints(playersName, true, win);//false==hard level
@@ -897,7 +900,7 @@ public class MainGamePanel {
 						}
 
 					}
-					else{
+					else{ /*If player try to cheat Enemy giving a wrong answer.*/
 						text = "Ξανά σκεφτείτε το!";
 						textArea.setText(text);
 					}
@@ -912,10 +915,10 @@ public class MainGamePanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if(playerTurn && !enemyTurn){
-					if(questionJList.getSelectedValue()!=null){
+					if(questionJList.getSelectedValue()!=null){ /*Player chooses a question*/
 						String selectedQuestion = (String)questionJList.getSelectedValue();
 						//Question playerQuestion = null ;
-						for (Question q : questionList){
+						for (Question q : questionList){ 
 							if (q.getCharacteristic().equals(selectedQuestion))
 								playerQuestion = q;
 						}
@@ -925,12 +928,12 @@ public class MainGamePanel {
 								playerQuestionIndex=i;
 							}
 						}
-						if(playerQuestionIndex != -1){
+						if(playerQuestionIndex != -1){ /*Delete correct faces from questionList because wizard may use it.*/
 						questionList.get(playerQuestionIndex).facesForDelete(faceslist, enemyFace);
 						questionList.get(playerQuestionIndex).deleteFaces(faceslist);
 						questionList.remove(playerQuestionIndex);
 						}
-						if(playerQuestion.questionResponse(enemyFace)){
+						if(playerQuestion.questionResponse(enemyFace)){ /*Response at player's question*/
 							text = "Ναι!";
 							model.remove(playerQuestion.getCodeQuestion());
 							model.insertElementAt(playerQuestion.getCharacteristic() + ": Ναι", playerQuestion.getCodeQuestion());
@@ -959,8 +962,8 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(background);
 
 	}
-	
-public  String setFace(int code){//x,y,z,w are coordinates of JLabel in MainGamePanel
+/*This function gets a face's code (1 to 24) and returns the path that face's image is located.*/	
+public  String setFace(int code){
 		
 		String photoName = null;
 		switch (code){
