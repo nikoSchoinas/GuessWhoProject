@@ -37,7 +37,7 @@ public class Face {
 			this.codeFace= code;
 		}
 		
-		//Setters,getters, etc.
+		//getters
 		public int getCodeFace() {
 			return codeFace;
 		}
@@ -46,99 +46,47 @@ public class Face {
 			return sex;
 		}
 
-		public void setSex(boolean sex) {
-			this.sex = sex;
-		}
-
-		public void setCodeFace(int codeFace) {
-			this.codeFace = codeFace;
-		}
-
 		public boolean isBlackHair() {
 			return blackHair;
-		}
-
-		public void setBlackHair(boolean blackHair) {
-			this.blackHair = blackHair;
 		}
 
 		public boolean isBlondHair() {
 			return blondHair;
 		}
-
-		public void setBlondHair(boolean blondHair) {
-			this.blondHair = blondHair;
-		}
-
+		
 		public boolean isWhiteHair() {
 			return whiteHair;
-		}
-
-		public void setWhiteHair(boolean whiteHair) {
-			this.whiteHair = whiteHair;
 		}
 
 		public boolean isBrownHair() {
 			return brownHair;
 		}
-
-		public void setBrownHair(boolean brownHair) {
-			this.brownHair = brownHair;
-		}
-
+		
 		public boolean isBlueEyes() {
 			return blueEyes;
-		}
-
-		public void setBlueEyes(boolean blueEyes) {
-			this.blueEyes = blueEyes;
 		}
 
 		public boolean isBrownEyes() {
 			return brownEyes;
 		}
 
-		public void setBrownEyes(boolean brownEyes) {
-			this.brownEyes = brownEyes;
-		}
-		
 		public boolean isGreenEyes(){
 			return greenEyes;
 		}
 		
-		public void setGreenEyes(boolean greenEyes){
-			this.greenEyes = greenEyes;
-		}
-
 		public boolean isBlackSkin() {
 			return blackSkin;
 		}
-
-		public void setBlackSkin(boolean blackSkin) {
-			this.blackSkin = blackSkin;
-		}
-
+		
 		public boolean isGlasses() {
 			return glasses;
-		}
-
-		public void setGlasses(boolean glasses) {
-			this.glasses = glasses;
 		}
 
 		public boolean isHat() {
 			return hat;
 		}
 
-		public void setHat(boolean hat) {
-			this.hat = hat;
-		}
-
 		public boolean isFaceHair() {
 			return faceHair;
 		}
-
-		public void setFaceHair(boolean faceHair) {
-			this.faceHair = faceHair;
-		}		
 }
