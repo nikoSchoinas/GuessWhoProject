@@ -147,8 +147,8 @@ public class MainGamePanel {
 
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who");
-		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\game\\533038-guess-who-windows-screenshot-the-game-s-title-screen.png"));
-		frmGuessWho.setBounds(100, 100, 1068, 738);
+		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
+		frmGuessWho.setBounds(100, 100, 1068, 725);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
@@ -716,8 +716,8 @@ public class MainGamePanel {
 		frmGuessWho.getContentPane().add(lblWizard);
 
 		JButton button = new JButton("\u03A4\u03AD\u03BB\u03BF\u03C2 \u0393\u03CD\u03C1\u03BF\u03C5"); /*Τέλος γύρου button*/
-		button.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button.setBounds(848, 169, 108, 23);
+		button.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		button.setBounds(848, 168, 113, 25);
 		frmGuessWho.getContentPane().add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -959,7 +959,7 @@ public class MainGamePanel {
 
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(path + "\\MainBackround5.png"));
-        background.setBounds(0, 0, 1050, 693);
+        background.setBounds(0, 0, 1062, 693);
 		frmGuessWho.getContentPane().add(background);
 
 	}
