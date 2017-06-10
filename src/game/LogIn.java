@@ -83,7 +83,7 @@ public class LogIn {
 		label.setBounds(121, 96, 87, 32);
 		frmGuessWho.getContentPane().add(label);
 		
-		AccountName = new JTextField();
+		AccountName = new JTextField();//text field for the account name
 		label.setLabelFor(AccountName);
 		AccountName.setBounds(196, 104, 116, 22);
 		frmGuessWho.getContentPane().add(AccountName);
@@ -113,7 +113,7 @@ public class LogIn {
 		frmGuessWho.getContentPane().add(LogInButton);
 		frmGuessWho.getRootPane().setDefaultButton(LogInButton);//set enter default button so it can be use by pressing enter
 		
-		JLabel Background = new JLabel("New label");
+		JLabel Background = new JLabel("New label");//background label
 		Background.setIcon(new ImageIcon(path + "//background4.jpg"));
 		Background.setBounds(0, 0, 444, 272);
 		frmGuessWho.getContentPane().add(Background);

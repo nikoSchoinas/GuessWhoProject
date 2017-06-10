@@ -21,24 +21,6 @@ public class PauseMenu {
 	private String playersName;
 
 	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PauseMenu window = new PauseMenu(frmGuessWho,playersName);
-					window.frmGuessWho.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	
-
-	/**
 	 * Create the application.
 	 */
 	public PauseMenu(JFrame MainGamePanel,String playersName) {

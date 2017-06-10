@@ -16,22 +16,7 @@ public class CreateAccount {
 
 	public JFrame frmGuessWho;
 	private JTextField AccountName;
-	private int find =0;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreateAccount window = new CreateAccount();
-					window.frmGuessWho.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private int find =0;//using this variable to find the user in the file
 
 	/**
 	 * Create the application.
@@ -55,7 +40,7 @@ public class CreateAccount {
 		frmGuessWho.setResizable(false);
 		
 		
-		JButton BackButton = new JButton("Back");
+		JButton BackButton = new JButton("Back");//back button that dispose window 
 		BackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmGuessWho.setVisible(false);
@@ -74,14 +59,14 @@ public class CreateAccount {
 		BackButton.setBounds(182, 179, 99, 25);
 		frmGuessWho.getContentPane().add(BackButton);
 		
-		JButton CreateButton = new JButton("\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1");
+		JButton CreateButton = new JButton("\u0394\u03B7\u03BC\u03B9\u03BF\u03C5\u03C1\u03B3\u03AF\u03B1");//account creation button
 		CreateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 						
 						String playersName = AccountName.getText();	
 						FileEditor rankFile = new FileEditor();
 						find = rankFile.searchEditor(playersName);// searching the file for the given account name.
-						AccountName.setText(" ");
+						AccountName.setText("");
 						try {
 							if(find==-1){//if the file doesn't contain the account name
 								if(playersName.contains(" ")){//check if the given name has spaces.
@@ -130,25 +115,23 @@ public class CreateAccount {
 		frmGuessWho.getContentPane().add(CreateButton);
 		frmGuessWho.getRootPane().setDefaultButton(CreateButton);
 		
-		JLabel label = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1:");
-		label.setFont(new Font("Times New Roman", Font.BOLD, 21));
-		label.setBounds(121, 96, 87, 32);
-		frmGuessWho.getContentPane().add(label);
+		JLabel Name_Label = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1:");
+		Name_Label.setFont(new Font("Times New Roman", Font.BOLD, 21));
+		Name_Label.setBounds(121, 96, 87, 32);
+		frmGuessWho.getContentPane().add(Name_Label);
 		
-		AccountName = new JTextField();
-		label.setLabelFor(AccountName);
+		AccountName = new JTextField();//text field for the account name of the user
+		Name_Label.setLabelFor(AccountName);
 		AccountName.setBounds(196, 104, 116, 22);
 		frmGuessWho.getContentPane().add(AccountName);
 		AccountName.setColumns(10);
 		
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(path + "//background4.jpg"));
-		lblNewLabel.setBounds(0, 0, 442, 268);
-		frmGuessWho.getContentPane().add(lblNewLabel);
+		JLabel Background = new JLabel("New label");//background label
+		Background.setIcon(new ImageIcon(path + "//background4.jpg"));
+		Background.setBounds(0, 0, 442, 268);
+		frmGuessWho.getContentPane().add(Background);
 	}
 	
-	public void setBlank(){//Method that set blank the text area after a failed attempt to create an account.
-		AccountName.setText(" ");
-	}
+	
 }

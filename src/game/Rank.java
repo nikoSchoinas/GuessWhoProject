@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 public class Rank {
 
 	JFrame frmGuessWho;
-	private DefaultListModel model_Names = new DefaultListModel();
-	private String playersName;
+	private DefaultListModel model_Names = new DefaultListModel();//model for the jlist
+	private String playersName;//the players name
 
 	/**
 	 * Create the application.
@@ -40,17 +40,17 @@ public class Rank {
 		frmGuessWho = new JFrame();
 		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path + "\\logo2.jpg"));
 		frmGuessWho.setTitle("Guess Who ?\r\n");
-		frmGuessWho.setBounds(100, 100, 450, 300);
+		frmGuessWho.setBounds(100, 100, 445, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
 		frmGuessWho.setResizable(false);
 		
-		FileEditor rankFile = new FileEditor();
-		rankFile.sortList();
-		ArrayList<GamerProfile> playersArray = rankFile.getRankFile();
+		FileEditor rankFile = new FileEditor();//use the file with the users
+		rankFile.sortList();//sort it 
+		ArrayList<GamerProfile> playersArray = rankFile.getRankFile();//and make an array of the players with their statistics
 		
-		JButton BackButton = new JButton("Back\r\n");
+		JButton BackButton = new JButton("Back\r\n");//back button
 		BackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmGuessWho.setVisible(false);
@@ -69,20 +69,25 @@ public class Rank {
 		BackButton.setBounds(349, 117, 71, 25);
 		frmGuessWho.getContentPane().add(BackButton);
 		
-		JList list_Name = new JList();
+		JList list_Name = new JList();//list with the name of the players
 		for(int i =0;i<playersArray.size();i++){
 			model_Names.addElement(playersArray.get(i).getName());
 		}
+		
+		
 		list_Name.setModel(model_Names);
 		list_Name.setBounds(107, 29, 101, 221);
 		//list_Name.setBackground(Color.WHITE);
 		frmGuessWho.getContentPane().add(list_Name);
-		list_Name.setCellRenderer(new TransparentListCellRenderer());
+		list_Name.setCellRenderer(new TransparentListCellRenderer());//make jlist transparent
         list_Name.setOpaque(false);
+        
+        
 		JLabel nameLabel = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1");
 		nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		nameLabel.setBounds(107, 3, 100, 25);
 		frmGuessWho.getContentPane().add(nameLabel);
+		
 		
 		JLabel PointLabel = new JLabel("\u03A0\u03CC\u03BD\u03C4\u03BF\u03B9");
 		PointLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,32 +95,28 @@ public class Rank {
 		PointLabel.setBounds(219, 3, 100, 25);
 		frmGuessWho.getContentPane().add(PointLabel);
 			
-		//JList list_1 = new JList();		
+
 		
-		/*list_1.setBounds(238, 29, 101, 221);
-		frmGuessWho.getContentPane().add(list_1);*/
-		
-		JList list_Points = new JList();
-		//list_Points.setBackground(Color.WHITE);
+		JList list_Points = new JList();//list with the points of the players
 		list_Points.setBounds(258, 29, 33, 221);
 		DefaultListModel model_Points = new DefaultListModel();
 		for(int i =0;i<playersArray.size();i++){
 			model_Points.addElement(playersArray.get(i).getPoints());
 		}
 		list_Points.setModel(model_Points);
-		list_Points.setCellRenderer(new TransparentListCellRenderer());
+		list_Points.setCellRenderer(new TransparentListCellRenderer());//make jlist transparent
         list_Points.setOpaque(false);
 		frmGuessWho.getContentPane().add(list_Points);
 		
-		JLabel Background = new JLabel("New label");
+		JLabel Background = new JLabel("New label");//background
 		Background.setIcon(new ImageIcon(path + "//background4.jpg"));
-		Background.setBounds(0, 3, 442, 268);
+		Background.setBounds(0, 0, 444, 271);
 		frmGuessWho.getContentPane().add(Background);
 		
 		
 	}
 	
-	   public class TransparentListCellRenderer extends DefaultListCellRenderer {
+	   public class TransparentListCellRenderer extends DefaultListCellRenderer {//creating a class that make jlist transparent
 
 		      
 	        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {

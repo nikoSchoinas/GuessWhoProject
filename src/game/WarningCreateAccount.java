@@ -37,6 +37,7 @@ public class WarningCreateAccount {
 		frmGuessWho.setLocationRelativeTo(null);
 		frmGuessWho.setResizable(false);
 		
+		//ok button that dispose the window and return to account creation window
 		JButton OkButton = new JButton("OK");
 		OkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

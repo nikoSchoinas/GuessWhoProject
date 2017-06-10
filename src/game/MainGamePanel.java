@@ -125,6 +125,7 @@ public class MainGamePanel {
 		wizardTurn = true;
 		playerQuestion = null;
 		questionJList = new JList<String>();
+		questionJList.setBackground(Color.PINK);
 		
 
 		/*This block call Initialization static method to fill facesList and questionList.*/
