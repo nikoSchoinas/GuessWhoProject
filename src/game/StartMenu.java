@@ -38,7 +38,7 @@ public class StartMenu {
 		frmGuessWho = new JFrame();
 		frmGuessWho.setTitle("Guess Who ?");
 		frmGuessWho.setIconImage(Toolkit.getDefaultToolkit().getImage(path+"\\logo2.jpg"));
-		frmGuessWho.setBounds(100, 100, 450, 300);
+		frmGuessWho.setBounds(100, 100, 446, 300);
 		frmGuessWho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuessWho.getContentPane().setLayout(null);
 		frmGuessWho.setLocationRelativeTo(null);
@@ -89,7 +89,7 @@ public class StartMenu {
 		//Background's Creation
 		JLabel Background = new JLabel("New label");
 		Background.setIcon(new ImageIcon(path + "//gwbackground.jpg"));
-		Background.setBounds(0, 0, 442, 272);
+		Background.setBounds(0, 0, 444, 272);
 		frmGuessWho.getContentPane().add(Background);
 		
 		
