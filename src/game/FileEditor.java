@@ -17,6 +17,10 @@ public class FileEditor {
 
 	public FileEditor() {
 
+		/*
+		 * Open a txt file named "statistics.txt"  which contains our profile history
+		 * (users ,points , etc )
+		 */
 		File inputFile = new File("statistics.txt");
 
 		try {
@@ -42,6 +46,10 @@ public class FileEditor {
 		this.rankFile = rankFile;
 	}
 
+	/*
+	 * Search if there is a player with a given name. If does then return his position
+	 * in our ArrayList, otherwise return -1
+	 */
 	public int searchEditor(String name) {
 
 		for (int i = 0; i < rankFile.size(); i++) {
@@ -51,6 +59,10 @@ public class FileEditor {
 		return -1;
 	}
 
+	/*
+	 * Create a GamerProfile . Return null if the given name there is already
+	 * or return an item GamerProfile 
+	 */
 	public GamerProfile createProfile(String name) {
 
 		GamerProfile gamer = null;
@@ -64,38 +76,20 @@ public class FileEditor {
 		return gamer;
 	}
 
-	public void showPlayerStatistics(GamerProfile gamer) {
-
-		for (int i = 0; i < rankFile.size(); i++) {
-			if (rankFile.get(i).getName().equals(gamer.getName())) {
-				System.out.println(gamer.getName() + gamer.getPoints() + gamer.getWinsEasy() + gamer.getLosesEasy()
-						+ gamer.getWinsHard() + gamer.getLosesHard() + gamer.getNumberOfEasy()
-						+ gamer.getNumberOfHard());
-			}
-		}
-	}
-
-	public void showTable() {
-		this.sortList();
-		for (GamerProfile gamer : rankFile) {
-			System.out.println(gamer.getName() + " " + gamer.getPoints() + " " + gamer.getWinsEasy() + " "
-					+ gamer.getLosesEasy() + " " + gamer.getWinsHard() + " " + gamer.getLosesHard() + " "
-					+ gamer.getNumberOfEasy() + " " + gamer.getNumberOfHard());
-		}
-	}
-
+	/*
+	 * Sort ArrayList's items in descending order
+	 */
 	public void sortList() {
 
 		Collections.sort(rankFile);
-		// αντιστρεφη την λιστα επειδη η sort τα βαζει σε αυξουσα σε σειρα και
-		// οχι σε φθηνουσα
 		Collections.reverse(rankFile);
 
-		for (int i = 0; i < rankFile.size(); i++) {
-			System.out.println(rankFile.get(i).getName());
-		}
 	}
 
+	/*
+	 * Update our file 
+	 * "output" is the name of our txt file
+	 */
 	public void writeFile(String output) {
 
 		this.sortList();
@@ -114,6 +108,9 @@ public class FileEditor {
 		}
 	}
 
+	/*
+	 * Calculate player's points and update his history (points, wins and loses at easy level etc)
+	 */
 	public void calculatePoints(String username, boolean level, boolean result) {
 
 		/*
