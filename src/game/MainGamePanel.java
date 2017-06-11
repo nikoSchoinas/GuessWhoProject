@@ -36,8 +36,9 @@ public class MainGamePanel {
 
 	static JFrame frmGuessWho;
 
-
-	private ArrayList<Integer> facesCover;
+	/*If a face is covered (eg. face with number 6 - Βικτωρ-) then at 6st position in ArrayList facesCover will be a zero (0).
+	Else if face is uncovered at this position in ArrayList will be an one (1)*/
+	private ArrayList<Integer> facesCover; 
 	private int uncoveredFacesCounter;
 
 	private boolean playerTurn; /*the combination of those boolean variable let gamer push a specific button*/
@@ -978,7 +979,7 @@ public  String setFace(int code){
 		break;
 		case 5: photoName = "\\players_icon\\\u0392\u03B1\u03C1\u03B8\u03BF\u03BB\u03BF\u03BC\u03B1\u03AF\u03BF\u03C2.jpg";
 		break;
-		case 6: photoName = "\\players_icon\\\u0391\u03B3\u03B1\u03B8\u03AE.jpg";
+		case 6: photoName = "\\players_icon\\\u0392\u03AF\u03BA\u03C4\u03C9\u03C1.jpg";
 		break;
 		case 7: photoName = "\\players_icon\\\u0393\u03B5\u03CE\u03C1\u03B3\u03B9\u03BF\u03C2.jpg";
 		break;
